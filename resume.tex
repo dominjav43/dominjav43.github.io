@@ -1,0 +1,162 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ragged2e}
+\usepackage{fontawesome5}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.0in}
+\addtolength{\topmargin}{-0.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule\vspace{-5pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{#1 \vspace{-2pt}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small#4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubheadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubheadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in, noitemsep, label={$\cdot$}]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge Kim Javier} \\ \vspace{1pt}
+    Technical Leader | Project Manager | DevOps \& Full-Stack Developer | Cloud, Security \& Network Automation \\ \vspace{1pt}
+    \small 📍 Philippines | \href{https://sargo.ph}{sargo.ph} | \href{mailto:kim.javier@example.com}{kim.javier@example.com} | \href{https://github.com/kimjavier}{GitHub: github.com/kimjavier}
+\end{center}
+
+%-----------SUMMARY-----------
+\section{Summary}
+  \resumeItemListStart
+    \resumeItem{Hands-on technical leader and project manager with expertise in full-stack development, DevOps, cloud infrastructure, network automation, and enterprise security. I build and lead engineering teams to deliver robust, automated, and secure systems for industries including EV platforms and intercloud services. Skilled in bridging software development, infrastructure, and network operations, with a focus on scalable, high-performance, and maintainable applications.}
+  \resumeItemListEnd
+  \vspace{-5pt}
+  \textbf{Core Competencies:}
+  \resumeItemListStart
+    \resumeItem{\textbf{Infrastructure \& Cloud Automation:} AWS, OVH, Terraform, Docker/Kubernetes, IAM, SOPS, HashiCorp Vault}
+    \resumeItem{\textbf{Full-Stack \& Microservices:} NestJS, React, Node.js, PostgreSQL, Microfrontend architectures}
+    \resumeItem{\textbf{Network Automation \& Connectivity:} Cisco NSO, NetBox, Megaport, Equinix}
+    \resumeItem{\textbf{Enterprise Security:} OIDC/OAuth2, Keycloak, SSO, IAM, Vault, SOPS}
+    \resumeItem{\textbf{Testing \& Reliability:} Stress/load testing, integration testing, Pact, WireMock}
+    \resumeItem{\textbf{CI/CD \& DevOps:} GitHub Actions, GitLab pipelines, production deployments}
+    \resumeItem{\textbf{UI/UX \& Documentation:} Figma, developer-friendly specifications}
+  \resumeItemListEnd
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubheadingListStart
+    \resumeSubheading
+      {Founder / Technical Lead – Tournament Bracket App}{2024–Present}
+      {}{}
+      \resumeItemListStart
+        \resumeItem{Designed and launched a fully automated tournament bracket platform with dynamic scheduling and player management.}
+        \resumeItem{Built a microservices backend (NestJS + PostgreSQL) and a modern React frontend.}
+        \resumeItem{Implemented CI/CD pipelines via GitHub Actions, reducing deployment time from hours to minutes.}
+        \resumeItem{Integrated user login with Google authentication for secure access.}
+        \resumeItem{Delivered a reliable platform supporting continuous tournaments and high concurrency.}
+      \resumeItemListEnd
+    \resumeSubheading
+      {EV Industry – Infrastructure \& Systems Architect}{}
+      {}{}
+      \resumeItemListStart
+        \resumeItem{Architected scalable EV backend platforms on AWS and OVH, handling thousands of concurrent connections.}
+        \resumeItem{Automated provisioning, scaling, and identity/access management across multiple cloud environments.}
+        \resumeItem{Implemented stress/load testing to validate performance and reliability.}
+        \resumeItem{Managed secrets and secure configuration using SOPS and Keycloak.}
+      \resumeItemListEnd
+    \resumeSubheading
+      {Legacy System Modernization \& Intercloud Migration}{}
+      {}{}
+      \resumeItemListStart
+        \resumeItem{Migrated legacy React apps to the latest versions, improving maintainability and developer velocity.}
+        \resumeItem{Transformed monolithic frontends into microfrontend architecture, enabling independent feature deployment.}
+        \resumeItem{Implemented intercloud infrastructure with Terraform for seamless multi-cloud operations.}
+        \resumeItem{Built integration contract testing systems using Pact, reducing integration failures by 70\%.}
+        \resumeItem{Integrated enterprise authentication and authorization using OIDC, OAuth2, Cognito, SSO, and Keycloak.}
+      \resumeItemListEnd
+    \resumeSubheading
+      {Network Services Automation – Cisco NSO \& Vendor Integration}{}
+      {}{}
+      \resumeItemListStart
+        \resumeItem{Designed backend automation systems using Cisco NSO, integrating Megaport virtual connectivity and Equinix data centers.}
+        \resumeItem{Maintained network inventory and orchestration with NetBox.}
+        \resumeItem{Ensured secure vendor API authentication and automated workflows.}
+      \resumeItemListEnd
+  \resumeSubheadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects / Featured Work}
+  \resumeItemListStart
+    \resumeItem{Tournament Bracket Platform – Live at \href{https://sargo.ph}{sargo.ph} (Google login)}
+    \resumeItem{EV Backend Platforms – Scalable, stress-tested systems on AWS and OVH}
+    \resumeItem{Legacy React Migration \& Microfrontend Implementation}
+    \resumeItem{Network Automation Backend – Cisco NSO integration with Megaport \& Equinix}
+  \resumeItemListEnd
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubheadingListStart
+    \resumeSubheading{[Your Degree]}{[Year]}
+      {[Your University]}{}
+      \resumeItemListStart
+        \resumeItem{(optional if you want to include)}
+      \resumeItemListEnd
+  \resumeSubheadingListEnd
+
+%-----------SKILLS-----------
+\section{Skills}
+  \resumeItemListStart
+    \resumeItem{Project Management / Agile / Scrum}
+    \resumeItem{Full-Stack Development: NestJS, React, Node.js, TypeScript, TypeORM, PostgreSQL}
+    \resumeItem{Cloud \& Infrastructure: AWS, OVH, Terraform, Kubernetes, Docker, IAM}
+    \resumeItem{Network Automation: Cisco NSO, NetBox, Megaport, Equinix}
+    \resumeItem{Security \& Identity: Cognito, OIDC, OAuth2, SSO, Keycloak, SOPS, HashiCorp Vault}
+    \resumeItem{Testing \& Reliability: Simulators, Pact, WireMock, Stress/Load Testing}
+    \resumeItem{CI/CD: GitHub Actions, GitLab, Production Pipelines}
+    \resumeItem{UI/UX \& Documentation: Figma, Developer-Friendly Specifications}
+  \resumeItemListEnd
+
+\end{document}
