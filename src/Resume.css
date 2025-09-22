@@ -1,17 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
 
-/*
-  Make the body a flex container to center the resume.
-  This ensures the resume card is centered on the viewport.
-*/
-body {
-  background-color: #f0f2f5; /* A neutral background to make the resume pop */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
 .resume-container {
   font-family: 'Rubik', sans-serif;
   line-height: 1.5;
@@ -31,6 +19,25 @@ body {
   gap: 30px;
   text-align: left;
   margin-bottom: 30px;
+}
+
+/* Responsive Header */
+@media (max-width: 768px) {
+  .resume-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-image {
+    order: -1; /* Move the image to the top */
+    margin-bottom: 20px;
+  }
+
+  .resume-header .contact-info {
+    justify-content: center;
+    gap: 10px;
+  }
 }
 
 .header-main {
