@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './Resume.css';
-import { FiMapPin, FiGlobe, FiMail, FiGithub } from 'react-icons/fi'; // Import icons
+import {
+  FiMapPin,
+  FiGlobe,
+  FiMail,
+  FiGithub,
+  FiDownload,
+} from 'react-icons/fi'; // Import icons
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 // --- DATA ---
 // Separating data from the component makes it easier to manage and update.
@@ -130,6 +138,54 @@ const resumeData = {
 // --- COMPONENTS ---
 // Breaking the UI into smaller, reusable components improves clarity and maintainability.
 
+const DownloadButton: React.FC<{ onDownload: () => void }> = ({
+  onDownload,
+}) => (
+  <button onClick={onDownload} className="download-pdf-button">
+    <FiDownload />
+    Download as PDF
+  </button>
+);
+
+const handleDownloadPdf = async (element: HTMLElement | null) => {
+  if (!element) return;
+
+  // Find the button wrapper and hide it for the screenshot
+  const downloadButton = element.querySelector(
+    '.download-button-wrapper'
+  ) as HTMLElement;
+  if (downloadButton) downloadButton.style.display = 'none';
+
+  const canvas = await html2canvas(element, {
+    scale: 2, // Higher scale for better quality
+    useCORS: true, // Needed for external images like your profile picture
+    // Ensure it captures the full height of the content, not just the visible part
+    windowWidth: element.scrollWidth,
+    windowHeight: element.scrollHeight,
+  });
+
+  // Show the button again after the screenshot is taken
+  if (downloadButton) downloadButton.style.display = 'flex';
+
+  const imgData = canvas.toDataURL('image/png');
+  const imgWidth = canvas.width;
+  const imgHeight = canvas.height;
+
+  // A4 width in mm is 210. Calculate height to maintain aspect ratio.
+  const pdfWidth = 210;
+  const pdfHeight = (imgHeight * pdfWidth) / imgWidth;
+
+  // Create a PDF with custom dimensions matching the content's aspect ratio
+  const pdf = new jsPDF({
+    orientation: 'p',
+    unit: 'mm',
+    format: [pdfWidth, pdfHeight],
+  });
+
+  pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+  pdf.save('DominicJavier-Resume.pdf');
+};
+
 const ResumeHeader: React.FC = () => (
   <header className="resume-header">
     <div className="header-main">
@@ -202,8 +258,10 @@ const JobEntry: React.FC<{ job: IJob }> = ({ job }) => (
 // The main component now assembles the smaller pieces, making the structure clear.
 
 const Resume: React.FC = () => {
+  const resumeRef = useRef<HTMLDivElement>(null);
+
   return (
-    <div className="resume-container">
+    <div className="resume-container" ref={resumeRef}>
       <ResumeHeader />
 
       <ResumeSection title="Summary">
@@ -239,6 +297,12 @@ const Resume: React.FC = () => {
           ))}
         </ul>
       </ResumeSection>
+
+      <div className="download-button-wrapper">
+        <DownloadButton
+          onDownload={() => handleDownloadPdf(resumeRef.current)}
+        />
+      </div>
 
       {/*
       <ResumeSection title="Education">
