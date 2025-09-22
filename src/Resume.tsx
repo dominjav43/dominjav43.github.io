@@ -17,7 +17,7 @@ interface ICompetency {
 }
 
 const resumeData = {
-  name: 'Kim Javier',
+  name: 'Dominic Javier',
   title: 'Technical Leader | Project Manager | DevOps & Full-Stack Developer',
   profileImage:
     'https://media.licdn.com/dms/image/v2/C5603AQFGp_E9-asKBA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1610005980560?e=1761177600&v=beta&t=9T_mHMFsjhMcT9ekimSDQ8w-XSjk6FoffMb38gnOOGc', // <-- Add your image to the `public` folder
