@@ -1,14 +1,14 @@
-import React, { useRef } from 'react';
-import './Resume.css';
+import React, { useRef } from "react";
+import "./Resume.css";
 import {
   FiMapPin,
   FiGlobe,
   FiMail,
   FiGithub,
   FiDownload,
-} from 'react-icons/fi'; // Import icons
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
+} from "react-icons/fi"; // Import icons
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
 // --- DATA ---
 // Separating data from the component makes it easier to manage and update.
@@ -25,112 +25,128 @@ interface ICompetency {
 }
 
 const resumeData = {
-  name: 'Dominic Javier', // or 'Kim Javier'
-  title: 'Technical Leader | Project Manager | DevOps & Full-Stack Developer',
-  profileImage: '/profile.jpg', // Using a local image from the `public` folder is more reliable.
+  name: "Dominic Javier", // or 'Kim Javier'
+  title: "Technical Leader | Project Manager | DevOps & Full-Stack Developer",
+  profileImage: "/profile.jpg", // Using a local image from the `public` folder is more reliable.
   contact: {
-    location: 'Camarines Sur, Philippines',
-    website: 'https://sargo.ph',
-    email: 'dominjav43@gmail.com',
-    github: 'https://github.com/dominjav43',
+    location: "Camarines Sur, Philippines",
+    website: "https://sargo.ph",
+    email: "dominjav43@gmail.com",
+    github: "https://github.com/dominjav43",
   },
   summary:
-    'Hands-on technical leader and project manager with expertise in full-stack development, DevOps, cloud infrastructure, network automation, and enterprise security. I build and lead engineering teams to deliver robust, automated, and secure systems for industries including EV platforms and intercloud services. Skilled in bridging software development, infrastructure, and network operations, with a focus on scalable, high-performance, and maintainable applications.',
+    "Hands-on technical leader and project manager with expertise in full-stack development, DevOps, cloud infrastructure, network automation, and enterprise security. I build and lead engineering teams to deliver robust, automated, and secure systems for industries including EV platforms and intercloud services. Skilled in bridging software development, infrastructure, and network operations, with a focus on scalable, high-performance, and maintainable applications.",
   coreCompetencies: [
     {
-      category: 'Infrastructure & Cloud Automation',
+      category: "Infrastructure & Cloud Automation",
       skills:
-        'AWS, OVH, Terraform, Docker/Kubernetes, IAM, SOPS, HashiCorp Vault',
+        "AWS, OVH, Terraform, Docker/Kubernetes, IAM, SOPS, HashiCorp Vault",
     },
     {
-      category: 'Full-Stack & Microservices',
-      skills: 'NestJS, React, Node.js, PostgreSQL, Microfrontend architectures',
+      category: "Full-Stack & Microservices",
+      skills: "NestJS, React, Node.js, PostgreSQL, Microfrontend architectures",
     },
     {
-      category: 'Network Automation & Connectivity',
-      skills: 'Cisco NSO, NetBox, Megaport, Equinix',
+      category: "Network Automation & Connectivity",
+      skills: "Cisco NSO, Netbox, Megaport, Equinix",
     },
     {
-      category: 'Enterprise Security',
-      skills: 'OIDC/OAuth2, Keycloak, SSO, IAM, Vault, SOPS',
+      category: "Enterprise Security",
+      skills: "OIDC/OAuth2, Keycloak, SSO, IAM, Vault, SOPS",
     },
     {
-      category: 'Testing & Reliability',
-      skills: 'Stress/load testing, integration testing, Pact, WireMock',
+      category: "Testing & Reliability",
+      skills: "Stress/load testing, integration testing, Pact, WireMock",
     },
     {
-      category: 'CI/CD & DevOps',
-      skills: 'GitHub Actions, GitLab pipelines, production deployments',
+      category: "CI/CD & DevOps",
+      skills: "GitHub Actions, GitLab pipelines, production deployments",
     },
     {
-      category: 'UI/UX & Documentation',
-      skills: 'Figma, developer-friendly specifications',
+      category: "UI/UX & Documentation",
+      skills: "Figma, developer-friendly specifications",
     },
   ] as ICompetency[],
   experience: [
     {
-      title: 'Founder / Technical Lead – Tournament Bracket App',
-      details: '2024–Present',
+      title: "Founder / Technical Lead – Tournament Bracket App",
+      details: "2024–Present",
       points: [
-        'Designed and launched a fully automated tournament bracket platform with dynamic scheduling and player management.',
-        'Built a microservices backend (NestJS + PostgreSQL) and a modern React frontend.',
-        'Implemented CI/CD pipelines via GitHub Actions, reducing deployment time from hours to minutes.',
-        'Integrated user login with Google authentication for secure access.',
-        'Delivered a reliable platform supporting continuous tournaments and high concurrency.',
+        "Designed and launched a fully automated tournament bracket platform with dynamic scheduling and player management.",
+        "Built a microservices backend (NestJS + PostgreSQL) and a modern React frontend.",
+        "Implemented CI/CD pipelines via GitHub Actions, reducing deployment time from hours to minutes.",
+        "Integrated user login with Google authentication for secure access.",
+        "Delivered a reliable platform supporting continuous tournaments and high concurrency.",
       ],
     },
     {
-      title: 'EV Industry – Infrastructure & Systems Architect',
-      details: '',
+      title: "Cisco NSO Multi-Vendor Interconnect Services Lead",
+      details: "2025–Present",
       points: [
-        'Architected scalable EV backend platforms on AWS and OVH, handling thousands of concurrent connections.',
-        'Automated provisioning, scaling, and identity/access management across multiple cloud environments.',
-        'Implemented stress/load testing to validate performance and reliability.',
-        'Managed secrets and secure configuration using SOPS and Keycloak.',
+        "Led design and implementation of Cisco NSO-based multi-vendor interconnect services using RFM (Reactive Fast Maps), extending YANG models and Python orchestration logic to support Equinix Fabric and IX connections with vendor-specific options and lifecycle handling.",
+        "Developed Megaport/Equinix NED enhancements (YANG + Java) and NSO templates that translate NSO connection-service data into correct Megaport/Equinix Fabric/IX API payloads, with robust ID persistence, idempotency checks, and status polling.",
+        "Architected end-to-end IX automation pattern (provisioning, polling, external sync) integrating NSO, Equinix APIs, and Netbox as system of record (ix_type modeling), reusable across providers such as Megaport and Equinix.",
       ],
     },
     {
-      title: 'Legacy System Modernization & Intercloud Migration',
-      details: '',
+      title: "Coolify Infrastructure Architect – Linode Bare Metal",
+      details: "",
       points: [
-        'Migrated legacy React apps to the latest versions, improving maintainability and developer velocity.',
-        'Transformed monolithic frontends into microfrontend architecture, enabling independent feature deployment.',
-        'Implemented intercloud infrastructure with Terraform for seamless multi-cloud operations.',
-        'Built integration contract testing systems using Pact, reducing integration failures by 70%.',
-        'Integrated enterprise authentication and authorization using OIDC, OAuth2, Cognito, SSO, and Keycloak.',
+        "Architected and deployed Coolify-based infrastructure on Linode bare metal, designing Dockerized application stacks, automated DNS and TLS handling, and environment isolation for internal platforms.",
       ],
     },
     {
-      title: 'Network Services Automation – Cisco NSO & Vendor Integration',
-      details: '',
+      title: "EV Industry – Infrastructure & Systems Architect",
+      details: "",
       points: [
-        'Designed backend automation systems using Cisco NSO, integrating Megaport virtual connectivity and Equinix data centers.',
-        'Maintained network inventory and orchestration with NetBox.',
-        'Ensured secure vendor API authentication and automated workflows.',
+        "Architected scalable EV backend platforms on AWS and OVH, handling thousands of concurrent connections.",
+        "Automated provisioning, scaling, and identity/access management across multiple cloud environments.",
+        "Implemented stress/load testing to validate performance and reliability.",
+        "Managed secrets and secure configuration using SOPS and Keycloak.",
+      ],
+    },
+    {
+      title: "Legacy System Modernization & Intercloud Migration",
+      details: "",
+      points: [
+        "Migrated legacy React apps to the latest versions, improving maintainability and developer velocity.",
+        "Transformed monolithic frontends into microfrontend architecture, enabling independent feature deployment.",
+        "Implemented intercloud infrastructure with Terraform for seamless multi-cloud operations.",
+        "Built integration contract testing systems using Pact, reducing integration failures by 70%.",
+        "Integrated enterprise authentication and authorization using OIDC, OAuth2, Cognito, SSO, and Keycloak.",
+      ],
+    },
+    {
+      title: "Network Services Automation – Cisco NSO & Vendor Integration",
+      details: "",
+      points: [
+        "Designed backend automation systems using Cisco NSO, integrating Megaport virtual connectivity and Equinix data centers.",
+        "Maintained network inventory and orchestration with Netbox.",
+        "Ensured secure vendor API authentication and automated workflows.",
       ],
     },
   ] as IJob[],
   projects: [
     <>
-      Tournament Bracket Platform – Live at{' '}
+      Tournament Bracket Platform – Live at{" "}
       <a href="https://sargo.ph" target="_blank" rel="noopener noreferrer">
         sargo.ph
-      </a>{' '}
+      </a>{" "}
       (Google login)
     </>,
-    'EV Backend Platforms – Scalable, stress-tested systems on AWS and OVH',
-    'Legacy React Migration & Microfrontend Implementation',
-    'Network Automation Backend – Cisco NSO integration with Megaport & Equinix',
+    "EV Backend Platforms – Scalable, stress-tested systems on AWS and OVH",
+    "Legacy React Migration & Microfrontend Implementation",
+    "Network Automation Backend – Cisco NSO integration with Megaport & Equinix",
   ] as React.ReactNode[],
   skills: [
-    'Project Management / Agile / Scrum',
-    'Full-Stack Development: NestJS, React, Node.js, TypeScript, TypeORM, PostgreSQL',
-    'Cloud & Infrastructure: AWS, OVH, Terraform, Kubernetes, Docker, IAM',
-    'Network Automation: Cisco NSO, NetBox, Megaport, Equinix',
-    'Security & Identity: Cognito, OIDC, OAuth2, SSO, Keycloak, SOPS, HashiCorp Vault',
-    'Testing & Reliability: Simulators, Pact, WireMock, Stress/Load Testing',
-    'CI/CD: GitHub Actions, GitLab, Production Pipelines',
-    'UI/UX & Documentation: Figma, Developer-Friendly Specifications',
+    "Project Management / Agile / Scrum / Kanban",
+    "Full-Stack Development: NestJS, React, Node.js, TypeScript, TypeORM, PostgreSQL, Python, Java",
+    "Cloud & Infrastructure: AWS, OVH, Terraform, Kubernetes, Docker, IAM, Keycloak",
+    "Network Automation: Cisco NSO, Netbox, Megaport, Equinix",
+    "Security & Identity: Cognito, OIDC, OAuth2, SSO, Keycloak, SOPS, HashiCorp Vault",
+    "Testing & Reliability: Simulators, Pact, WireMock, Stress/Load Testing",
+    "CI/CD: GitHub Actions, GitLab, Production Pipelines",
+    "UI/UX & Documentation: Figma, Developer-Friendly Specifications",
   ],
 };
 
@@ -151,9 +167,9 @@ const handleDownloadPdf = async (element: HTMLElement | null) => {
 
   // Find the button wrapper and hide it for the screenshot
   const downloadButton = element.querySelector(
-    '.download-button-wrapper'
+    ".download-button-wrapper",
   ) as HTMLElement;
-  if (downloadButton) downloadButton.style.display = 'none';
+  if (downloadButton) downloadButton.style.display = "none";
 
   const canvas = await html2canvas(element, {
     scale: 2, // Higher scale for better quality
@@ -164,9 +180,9 @@ const handleDownloadPdf = async (element: HTMLElement | null) => {
   });
 
   // Show the button again after the screenshot is taken
-  if (downloadButton) downloadButton.style.display = 'flex';
+  if (downloadButton) downloadButton.style.display = "flex";
 
-  const imgData = canvas.toDataURL('image/png');
+  const imgData = canvas.toDataURL("image/png");
   const imgWidth = canvas.width;
   const imgHeight = canvas.height;
 
@@ -176,13 +192,13 @@ const handleDownloadPdf = async (element: HTMLElement | null) => {
 
   // Create a PDF with custom dimensions matching the content's aspect ratio
   const pdf = new jsPDF({
-    orientation: 'p',
-    unit: 'mm',
+    orientation: "p",
+    unit: "mm",
     format: [pdfWidth, pdfHeight],
   });
 
-  pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-  pdf.save('DominicJavier-Resume.pdf');
+  pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+  pdf.save("DominicJavier-Resume.pdf");
 };
 
 const ResumeHeader: React.FC = () => (
@@ -201,7 +217,7 @@ const ResumeHeader: React.FC = () => (
             href={resumeData.contact.website}
             target="_blank"
             rel="noopener noreferrer">
-            {resumeData.contact.website.replace('https://', '')}
+            {resumeData.contact.website.replace("https://", "")}
           </a>
         </div>
         <div className="contact-item">
@@ -216,7 +232,7 @@ const ResumeHeader: React.FC = () => (
             href={resumeData.contact.github}
             target="_blank"
             rel="noopener noreferrer">
-            {resumeData.contact.github.replace('https://github.com/', '')}
+            {resumeData.contact.github.replace("https://github.com/", "")}
           </a>
         </div>
       </div>
