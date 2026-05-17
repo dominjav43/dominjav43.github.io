@@ -35,39 +35,50 @@ const resumeData = {
     github: "https://github.com/dominjav43",
   },
   summary:
-    "Hands-on technical leader and project manager with expertise in full-stack development, DevOps, cloud infrastructure, network automation, and enterprise security. I build and lead engineering teams to deliver robust, automated, and secure systems for industries including EV platforms and intercloud services. Skilled in bridging software development, infrastructure, and network operations, with a focus on scalable, high-performance, and maintainable applications.",
+    "Hands-on technical leader, mobile architect, and DevOps engineer with extensive experience building full-stack applications, robust iOS & Android ecosystems, and cloud/network automation pipelines. I lead engineering teams to deliver high-performance, secure solutions, specializing in on-device OpenXML compilation, scalable EV charging infrastructures, and automated multi-vendor networking. Proficient in translating complex business or compliance requirements into production-grade systems.",
   coreCompetencies: [
     {
       category: "Infrastructure & Cloud Automation",
       skills:
-        "AWS, OVH, Terraform, Docker/Kubernetes, IAM, SOPS, HashiCorp Vault",
+        "AWS, OVH, Kubernetes, Terraform, Docker, Traefik LB, Flyway, SOPS",
     },
     {
-      category: "Full-Stack & Microservices",
-      skills: "NestJS, React, Node.js, PostgreSQL, Microfrontend architectures",
+      category: "Full-Stack & Mobile Engineering",
+      skills: "React, NestJS, Node.js, Swift/SwiftUI, SwiftData, Kotlin, Jetpack Compose, Room, Hilt, PostgreSQL",
     },
     {
-      category: "Network Automation & Connectivity",
-      skills: "Cisco NSO, Netbox, Megaport, Equinix",
+      category: "Network Automation & Orchestration",
+      skills: "Cisco NSO (YANG, RFM, Python, Java), Netbox, Megaport, Equinix Fabric",
     },
     {
-      category: "Enterprise Security",
-      skills: "OIDC/OAuth2, Keycloak, SSO, IAM, Vault, SOPS",
+      category: "Enterprise Security & IAM",
+      skills: "OIDC/OAuth2, Keycloak, Cognito, SSO, HashiCorp Vault, Cryptography",
     },
     {
-      category: "Testing & Reliability",
-      skills: "Stress/load testing, integration testing, Pact, WireMock",
+      category: "Testing & Reliability Engineering",
+      skills: "Test-Driven Development (TDD), Unit & UI/E2E testing, Pact, WireMock, Load/Stress Testing",
     },
     {
-      category: "CI/CD & DevOps",
-      skills: "GitHub Actions, GitLab pipelines, production deployments",
+      category: "CI/CD & DevOps Operations",
+      skills: "GitHub Actions, GitLab Pipelines, Production-grade deployment automation",
     },
     {
-      category: "UI/UX & Documentation",
-      skills: "Figma, developer-friendly specifications",
+      category: "UI/UX & Technical Specs",
+      skills: "Figma design-to-code tokens, high-fidelity mockups, developer-friendly specifications",
     },
   ] as ICompetency[],
   experience: [
+    {
+      title: "Co-Founder & Lead Engineer – SARDO Mobile Ecosystem",
+      details: "2024–Present",
+      points: [
+        "Architected and built the unified SARDO (DepEd School Form 2 Attendance Helper) mobile ecosystem, launching native iOS (Swift, SwiftUI, `@Observable`, SwiftData) and Android (Kotlin, Jetpack Compose, Room DB, Hilt, MVVM) apps to solve administrative bottlenecks for educators.",
+        "Engineered an on-device OpenXML spreadsheet engine (low-level ZIP compression & XML tree parsing) to programmatically edit, compute complex attendance sums, and compile official government spreadsheets without external server dependencies.",
+        "Designed and implemented an interactive, animated date navigation header with built-in custom date pickers and day-stepping animations matching premium HIG and Material Design 3 paradigms.",
+        "Enforced rigorous Test-Driven Development (TDD) cycles, establishing automated unit and UI testing pipelines that compile and execute cleanly in high-concurrency environments.",
+        "Integrated secure local persistence, relationship schemas (students/sections), and data backup protocols, ensuring absolute privacy and 99.9% database reliability.",
+      ],
+    },
     {
       title: "Founder / Technical Lead – Tournament Bracket App",
       details: "2024–Present",
@@ -89,20 +100,20 @@ const resumeData = {
       ],
     },
     {
+      title: "EV Industry – Infrastructure & Systems Architect",
+      details: "",
+      points: [
+        "Architected scalable EV backend platforms on AWS and OVH, handling thousands of concurrent connections using a microservices-based model.",
+        "Designed and implemented dynamic OCPP (Open Charge Point Protocol) WebSocket traffic splitting on Traefik Load Balancer using custom PathRegexp routing rules, enabling seamless, zero-downtime charger migration and blue-green API deployments.",
+        "Optimized Flyway database migration architectures using containerized Kubernetes init jobs to ensure atomic, zero-downtime schema deployments under concurrent load, eliminating manual DB interventions.",
+        "Automated resource provisioning, scaling, Keycloak identity/access management, and secure secrets handling using SOPS and HashiCorp Vault.",
+      ],
+    },
+    {
       title: "Coolify Infrastructure Architect – Linode Bare Metal",
       details: "",
       points: [
         "Architected and deployed Coolify-based infrastructure on Linode bare metal, designing Dockerized application stacks, automated DNS and TLS handling, and environment isolation for internal platforms.",
-      ],
-    },
-    {
-      title: "EV Industry – Infrastructure & Systems Architect",
-      details: "",
-      points: [
-        "Architected scalable EV backend platforms on AWS and OVH, handling thousands of concurrent connections.",
-        "Automated provisioning, scaling, and identity/access management across multiple cloud environments.",
-        "Implemented stress/load testing to validate performance and reliability.",
-        "Managed secrets and secure configuration using SOPS and Keycloak.",
       ],
     },
     {
@@ -134,19 +145,22 @@ const resumeData = {
       </a>{" "}
       (Google login)
     </>,
-    "EV Backend Platforms – Scalable, stress-tested systems on AWS and OVH",
-    "Legacy React Migration & Microfrontend Implementation",
-    "Network Automation Backend – Cisco NSO integration with Megaport & Equinix",
+    <>
+      SARDO DepEd SF2 Helper Ecosystem – Native iOS (Swift, SwiftUI, `@Observable`, SwiftData) and Android (Kotlin, Compose, Room, Hilt) apps automating school report collation via on-device OpenXML sheet compilation.
+    </>,
+    "EV Backend Platforms – OCPP traffic splitting (Traefik LB regex), Flyway migrations, and load-tested systems on AWS & OVH",
+    "Legacy React Migration & Microfrontend Architecture",
+    "Network Automation Backend – Cisco NSO integration with Megaport & Equinix Fabric APIs",
   ] as React.ReactNode[],
   skills: [
     "Project Management / Agile / Scrum / Kanban",
-    "Full-Stack Development: NestJS, React, Node.js, TypeScript, TypeORM, PostgreSQL, Python, Java",
-    "Cloud & Infrastructure: AWS, OVH, Terraform, Kubernetes, Docker, IAM, Keycloak",
-    "Network Automation: Cisco NSO, Netbox, Megaport, Equinix",
+    "Full-Stack Development: NestJS, React, Node.js, TypeScript, TypeORM, PostgreSQL, Swift/SwiftUI, SwiftData, Kotlin, Jetpack Compose, Room, Hilt, Python, Java",
+    "Cloud & Infrastructure: AWS, OVH, Terraform, Kubernetes, Docker, Traefik LB, Flyway, Coolify",
+    "Network Automation: Cisco NSO, Netbox, Megaport, Equinix Fabric & IX",
     "Security & Identity: Cognito, OIDC, OAuth2, SSO, Keycloak, SOPS, HashiCorp Vault",
-    "Testing & Reliability: Simulators, Pact, WireMock, Stress/Load Testing",
+    "Testing & Reliability: Test-Driven Development (TDD), Unit & UI Testing, Pact, WireMock, Stress/Load Testing",
     "CI/CD: GitHub Actions, GitLab, Production Pipelines",
-    "UI/UX & Documentation: Figma, Developer-Friendly Specifications",
+    "UI/UX & Documentation: Figma, HIG & Material Design 3, Developer-Friendly Specifications",
   ],
 };
 
