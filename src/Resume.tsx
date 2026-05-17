@@ -50,7 +50,7 @@ const resumeData = {
     {
       category: "Infrastructure & Cloud Automation",
       skills:
-        "AWS, OVH, Kubernetes, Terraform, Docker, Traefik LB, Flyway, SOPS",
+        "AWS, OVH, Kubernetes, Terraform, Docker, Traefik LB, Flyway, SOPS, Coolify",
     },
     {
       category: "Full-Stack & Mobile Engineering",
@@ -156,7 +156,7 @@ const resumeData = {
     "Cisco NSO & YANG Automation",
     "NetBox Integration",
     "Kubernetes & Terraform",
-    "Docker & Traefik LB",
+    "Docker, Traefik LB & Coolify",
     "Flyway DB Migrations",
     "Test-Driven Development (TDD)",
     "Keycloak, Authentik & Cognito OAuth2"
