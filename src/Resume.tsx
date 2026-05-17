@@ -128,29 +128,26 @@ const resumeData = {
       ],
     },
     {
-      title: "Network Services Automation – Cisco NSO & Vendor Integration",
-      details: "",
+      title: "Technical Architect & Lead Developer – Sipartech Automation Platform",
+      details: "2025–Present",
       points: [
-        "Designed backend automation systems using Cisco NSO, integrating Megaport virtual connectivity and Equinix data centers.",
-        "Maintained network inventory and orchestration with Netbox.",
-        "Ensured secure vendor API authentication and automated workflows.",
+        "Architected and engineered the stateless NetDevOps Portal & Orchestrator API (Node.js, TypeScript, Express, React), completely replacing legacy network orchestration systems to achieve scalable, modern service lifecycle management.",
+        "Implemented a reactive, scan-less Zero Touch Provisioning (ZTP) workflow leveraging Kea DHCP option 67 boot redirection, temporary management IP subnets, and automated SSH-based device bootstrap/upgrade agents.",
+        "Designed and built an Audit-Driven Configuration Reconciliation engine, incorporating a side-by-side 3-Pane Configuration Audit View (NSO Intent vs. Running Hardware vs. Diff) for manual drift resolution (Sync-From/Re-deploy).",
+        "Pioneered service-aware orchestration paradigms, displaying real-time client service dependencies (Transit IP BGP, EVPN E-Line) to run pre-deployment operational impact analysis and mitigate accidental network downtime.",
+        "Developed custom NetBox data model extensions (custom fields like `nso_device_id`, `nso_sync_state`, and `interface_role`) to map ephemeral NSO check-sync/fleet-poll states, utilizing NetBox as the single Source of Truth (SoT).",
+        "Enforced strict multi-vendor interface description standards via regex-based nomenclature checks (`CUST : <Client> [<Service>] [EPL <BW>]`) during automated port-termination provisioning.",
       ],
     },
   ] as IJob[],
   projects: [
     <>
-      Tournament Bracket Platform – Live at{" "}
-      <a href="https://sargo.ph" target="_blank" rel="noopener noreferrer">
-        sargo.ph
-      </a>{" "}
-      (Google login)
-    </>,
-    <>
       SARDO DepEd SF2 Helper Ecosystem – Native iOS (Swift, SwiftUI, `@Observable`, SwiftData) and Android (Kotlin, Compose, Room, Hilt) apps automating school report collation via on-device OpenXML sheet compilation.
     </>,
     "EV Backend Platforms – OCPP traffic splitting (Traefik LB regex), Flyway migrations, and load-tested systems on AWS & OVH",
     "Legacy React Migration & Microfrontend Architecture",
-    "Network Automation Backend – Cisco NSO integration with Megaport & Equinix Fabric APIs",
+    "NetDevOps Portal & Automation Platform – Zero Touch Provisioning (ZTP) pipeline, 3-pane configuration drift reconciliation view, and NetBox SoT integration for multi-vendor network orchestrations (Transit IP & EVPN E-Line)",
+    "Cisco NSO Multi-Vendor Interconnect – Reactive Fast Maps (RFM) orchestration and Megaport & Equinix Fabric APIs integration",
   ] as React.ReactNode[],
   skills: [
     "Project Management / Agile / Scrum / Kanban",
