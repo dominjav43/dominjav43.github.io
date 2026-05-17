@@ -20,6 +20,7 @@ import html2canvas from "html2canvas";
 interface IJob {
   title: string;
   details: string;
+  coreExpertise: string;
   points: string[];
 }
 
@@ -39,7 +40,7 @@ const resumeData = {
     website: "https://dominjav43.github.io",
   },
   summary:
-    "Hands-on technical leader, mobile architect, and DevOps engineer with extensive experience building full-stack applications, robust iOS & Android ecosystems, cloud/network automation pipelines, and agentic AI architectures. I lead engineering teams to deliver premium, secure solutions, specializing in agent-native design-to-code pipelines (Open Design), on-device OpenXML compilation, scalable EV charging infrastructures, and automated multi-vendor networking. Proficient in translating complex business or compliance requirements into production-grade systems.",
+    "Hands-on technical leader, mobile architect, and DevOps engineer with extensive experience building full-stack applications, robust iOS & Android ecosystems, and cloud/network automation pipelines. I lead engineering teams to deliver premium, secure solutions, specializing in agent-native design-to-code pipelines (Open Design), on-device OpenXML compilation, scalable EV charging infrastructures, and automated multi-vendor networking. Proficient in translating complex business or compliance requirements into production-grade systems.",
   coreCompetencies: [
     {
       category: "Agentic AI & LLM Orchestration",
@@ -80,43 +81,47 @@ const resumeData = {
     {
       title: "Founder & Lead Engineer – SARDO Mobile Ecosystem",
       details: "2024–Present",
+      coreExpertise: "iOS (Swift, SwiftUI, `@Observable`, SwiftData), Android (Kotlin, Jetpack Compose, Room, Hilt), OpenXML, MVVM, TDD",
       points: [
-        "Architected and built the unified SARDO (DepEd School Form 2 Attendance Helper) mobile ecosystem, launching native iOS (Swift, SwiftUI, `@Observable`, SwiftData) and Android (Kotlin, Jetpack Compose, Room DB, Hilt, MVVM) apps, saving a day in a month.",
-        "Engineered an on-device OpenXML spreadsheet engine (low-level ZIP compression & XML tree parsing) to programmatically edit, compute complex attendance sums, and compile official government spreadsheets without external server dependencies.",
-        "Designed and implemented an interactive, animated date navigation header with built-in custom date pickers and day-stepping animations matching premium HIG and Material Design 3 paradigms.",
-        "Designed a hybrid freemium monetization architecture enabling 3 free spreadsheet exports with full feature previews, seamlessly linked with local device-state tracking to ensure reliable and tamper-proof access control.",
-        "Enforced rigorous Test-Driven Development (TDD) cycles, establishing automated unit and UI testing pipelines that compile and execute cleanly in high-concurrency environments.",
-        "Integrated secure local persistence, relationship schemas (students/sections), and data backup protocols, ensuring absolute privacy and 99.9% database reliability.",
+        "**Architected** and launched the unified SARDO (DepEd School Form 2 Attendance Helper) mobile ecosystem, delivering native iOS (Swift, SwiftUI, `@Observable`, SwiftData) and Android (Kotlin, Jetpack Compose, Room, Hilt) applications that reclaim up to 8 hours of monthly administrative overhead per educator.",
+        "**Engineered** an on-device OpenXML spreadsheet engine (low-level ZIP compression & XML tree parsing) to programmatically edit, compute complex attendance sums, and compile official government spreadsheets without external server dependencies.",
+        "**Designed** and implemented an interactive, animated date navigation header with built-in custom date pickers and day-stepping animations matching premium HIG and Material Design 3 paradigms.",
+        "**Implemented** a hybrid freemium monetization architecture enabling 3 free spreadsheet exports with full feature previews, seamlessly linked with local device-state tracking to ensure reliable and tamper-proof access control.",
+        "**Enforced** rigorous Test-Driven Development (TDD) cycles, establishing automated unit and UI testing pipelines that compile and execute cleanly in high-concurrency environments.",
+        "**Integrated** secure local persistence, relationship schemas (students/sections), and data backup protocols, ensuring absolute privacy and 99.9% database reliability.",
       ],
     },
     {
       title: "Technical Architect & Lead Developer – Sipartech Automation Platform",
       details: "2025–Present",
+      coreExpertise: "Node.js, TypeScript, Express, React, NestJS, Kea DHCP (ZTP Option 67), NetBox API, Cisco NSO, YANG",
       points: [
-        "Architected and engineered a stateless Sipartech Portal & Orchestrator API (Node.js, TypeScript, Express, React), completely replacing legacy network orchestration systems to achieve scalable, modern service lifecycle management.",
-        "Implemented a reactive, scan-less Zero Touch Provisioning (ZTP) workflow leveraging Kea DHCP option 67 boot redirection, temporary management IP subnets, and automated SSH-based device bootstrap/upgrade agents.",
-        "Designed and built an Audit-Driven Configuration Reconciliation engine with a 3-pane visual audit view, reducing human error in network drift resolution by 70%.",
-        "Pioneered service-aware orchestration paradigms, displaying real-time client service dependencies (Transit IP BGP, EVPN E-Line) to run pre-deployment operational impact analysis and mitigate accidental network downtime.",
-        "Developed custom NetBox data model extensions to map ephemeral NSO check-sync/fleet-poll states, utilizing NetBox as the single Source of Truth (SoT).",
+        "**Architected** and engineered a stateless Sipartech Portal & Orchestrator API (Node.js, TypeScript, Express, React), completely replacing legacy network orchestration systems to achieve scalable, modern service lifecycle management.",
+        "**Spearheaded** a reactive, scan-less Zero Touch Provisioning (ZTP) workflow leveraging Kea DHCP option 67 boot redirection, temporary management IP subnets, and automated SSH-based device bootstrap/upgrade agents.",
+        "**Designed** and built an Audit-Driven Configuration Reconciliation engine with a 3-pane visual audit view, reducing human error in network drift resolution by 70%.",
+        "**Pioneered** service-aware orchestration paradigms, displaying real-time client service dependencies (Transit IP BGP, EVPN E-Line) to run pre-deployment operational impact analysis and mitigate accidental network downtime.",
+        "**Engineered** custom NetBox data model extensions to map ephemeral NSO check-sync/fleet-poll states, utilizing NetBox as the single Source of Truth (SoT).",
       ],
     },
     {
       title: "Cisco NSO Multi-Vendor Interconnect Services Lead",
       details: "2025–Present",
+      coreExpertise: "Cisco NSO, YANG, RFM (Reactive Fast Maps), Python, Java, Equinix Fabric & IX APIs, Megaport API, NetBox",
       points: [
-        "Led design and implementation of Cisco NSO-based multi-vendor interconnect services using RFM (Reactive Fast Maps), extending YANG models and Python orchestration logic to support Equinix Fabric and IX connections with vendor-specific options and lifecycle handling.",
-        "Developed Megaport/Equinix NED enhancements (YANG + Java) and NSO templates that translate NSO connection-service data into correct Megaport/Equinix Fabric/IX API payloads, with robust ID persistence, idempotency checks, and status polling.",
-        "Architected end-to-end IX automation pattern (provisioning, polling, external sync) integrating NSO, Equinix APIs, and Netbox as system of record (ix_type modeling), reusable across providers such as Megaport and Equinix.",
+        "**Spearheaded** the design and implementation of Cisco NSO-based multi-vendor interconnect services using RFM (Reactive Fast Maps), extending YANG models and Python orchestration logic to support Equinix Fabric and IX connections with vendor-specific options and lifecycle handling.",
+        "**Engineered** Megaport/Equinix NED enhancements (YANG + Java) and NSO templates that translate NSO connection-service data into correct Megaport/Equinix Fabric/IX API payloads, with robust ID persistence, idempotency checks, and status polling.",
+        "**Architected** an end-to-end IX automation pattern (provisioning, polling, external sync) integrating NSO, Equinix APIs, and Netbox as system of record (ix_type modeling), reusable across providers such as Megaport and Equinix.",
       ],
     },
     {
       title: "EV Industry – Infrastructure & Systems Architect",
       details: "2024–Present",
+      coreExpertise: "AWS, OVH, Kubernetes (EKS), Traefik LB, OCPP, Flyway, SOPS, HashiCorp Vault, Keycloak, Authentik",
       points: [
-        "Architected scalable EV backend platforms on AWS and OVH, handling thousands of concurrent connections using a microservices-based model.",
-        "Designed and implemented dynamic OCPP (Open Charge Point Protocol) WebSocket traffic splitting on Traefik Load Balancer using custom PathRegexp routing rules, enabling seamless, zero-downtime charger migration and blue-green API deployments.",
-        "Optimized Flyway database migrations via Kubernetes init jobs, achieving fully automated, atomic schema updates under high concurrent loads with zero deployment downtime.",
-        "Automated resource provisioning, scaling, Keycloak & Authentik identity/access management, and secure secrets handling using SOPS and HashiCorp Vault.",
+        "**Architected** scalable EV backend platforms on AWS and OVH, handling thousands of concurrent connections using a microservices-based model.",
+        "**Engineered** and implemented dynamic OCPP (Open Charge Point Protocol) WebSocket traffic splitting on Traefik Load Balancer using custom PathRegexp routing rules, enabling seamless, zero-downtime charger migration and blue-green API deployments.",
+        "**Optimized** Flyway database migrations via Kubernetes init jobs, achieving fully automated, atomic schema updates under high concurrent loads with zero deployment downtime.",
+        "**Automated** resource provisioning, scaling, Keycloak & Authentik identity/access management, and secure secrets handling using SOPS and HashiCorp Vault.",
       ],
     },
   ] as IJob[],
@@ -157,7 +162,7 @@ const resumeData = {
 };
 
 const Resume: React.FC = () => {
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const [theme, setTheme] = useState<"light" | "dark">("light");
   const [activeTab, setActiveTab] = useState<"summary" | "experience" | "projects" | "skills">("summary");
   const [imgError, setImgError] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
@@ -208,11 +213,26 @@ const Resume: React.FC = () => {
     }
   };
 
+  // Render Markdown bold (**text**) and inline code (`text`) properly
+  const renderFormattedText = (text: string) => {
+    const parts = text.split(/(\*\*.*?\*\*|`.*?`)/g);
+    return parts.map((part, index) => {
+      if (part.startsWith("**") && part.endsWith("**")) {
+        return <strong key={index}>{part.slice(2, -2)}</strong>;
+      }
+      if (part.startsWith("`") && part.endsWith("`")) {
+        return <code key={index} className="inline-code">{part.slice(1, -1)}</code>;
+      }
+      return part;
+    });
+  };
+
   // Safe Profile Icon Fallback
   const initials = resumeData.name
     .split(" ")
     .map(n => n[0])
     .join("");
+
 
   return (
     <div className={`portfolio-wrapper ${theme === "dark" ? "dark-theme" : ""}`}>
@@ -368,7 +388,7 @@ const Resume: React.FC = () => {
                     </div>
                     <ul className="job-bullet-list">
                       {job.points.map((pt, pIdx) => (
-                        <li key={pIdx}>{pt}</li>
+                        <li key={pIdx}>{renderFormattedText(pt)}</li>
                       ))}
                     </ul>
                   </div>
@@ -467,7 +487,7 @@ const Resume: React.FC = () => {
             </div>
             <ul className="print-job-list">
               {job.points.slice(0, 3).map((pt, pIdx) => (
-                <li key={pIdx}>{pt}</li>
+                <li key={pIdx}>{renderFormattedText(pt)}</li>
               ))}
             </ul>
           </div>
