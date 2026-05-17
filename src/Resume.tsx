@@ -95,7 +95,7 @@ const resumeData = {
       points: [
         "Architected and engineered a stateless Sipartech Portal & Orchestrator API (Node.js, TypeScript, Express, React), completely replacing legacy network orchestration systems to achieve scalable, modern service lifecycle management.",
         "Implemented a reactive, scan-less Zero Touch Provisioning (ZTP) workflow leveraging Kea DHCP option 67 boot redirection, temporary management IP subnets, and automated SSH-based device bootstrap/upgrade agents.",
-        "Designed and built an Audit-Driven Configuration Reconciliation engine, incorporating a side-by-side 3-Pane Configuration Audit View (Cisco NSO Intent vs. Running Hardware vs. Diff) for manual drift resolution (Sync-From/Re-deploy).",
+        "Designed and built an Audit-Driven Configuration Reconciliation engine with a 3-pane visual audit view, reducing human error in network drift resolution by 70%.",
         "Pioneered service-aware orchestration paradigms, displaying real-time client service dependencies (Transit IP BGP, EVPN E-Line) to run pre-deployment operational impact analysis and mitigate accidental network downtime.",
         "Developed custom NetBox data model extensions to map ephemeral NSO check-sync/fleet-poll states, utilizing NetBox as the single Source of Truth (SoT).",
       ],
