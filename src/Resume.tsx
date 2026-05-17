@@ -78,22 +78,10 @@ const resumeData = {
   ] as ICompetency[],
   experience: [
     {
-      title: "Agentic AI Platform Architect – Everything Claude Code (ECC)",
-      details: "2025–Present",
-      points: [
-        "Architected and engineered Everything Claude Code (ECC), an advanced agentic developer framework supporting 30+ domain-specific agents, 140+ custom workflow skills, and 60+ automated slash commands.",
-        "Built the core Autonomous Loop Operator that orchestrates agent fleets, detects execution stalls, recovers from context limits, and dynamically syncs workspace files via a standard MCP protocol.",
-        "Integrated Open Design (nexu-io/open-design) to build agent-native UI/UX engines, enabling agents to parse portable DESIGN.md systems and generate premium, design-system-compliant frontends.",
-        "Designed cost-aware model routing pipelines that analyze prompt complexity, leverage prompt caching, and optimize context token budgets to minimize LLM execution overhead.",
-        "Integrated strict quality and security gates, automating Test-Driven Development (TDD) pipelines and enforcing local security scanners for credentials, JWT/JWKS, SOPS, and HashiCorp Vault integrations.",
-        "Developed custom MCP servers and harness-optimization systems that maximize subagent tool completion rates and simplify multi-agent task delegation."
-      ],
-    },
-    {
-      title: "Co-Founder & Lead Engineer – SARDO Mobile Ecosystem",
+      title: "Founder & Lead Engineer – SARDO Mobile Ecosystem",
       details: "2024–Present",
       points: [
-        "Architected and built the unified SARDO (DepEd School Form 2 Attendance Helper) mobile ecosystem, launching native iOS (Swift, SwiftUI, `@Observable`, SwiftData) and Android (Kotlin, Jetpack Compose, Room DB, Hilt, MVVM) apps to solve administrative bottlenecks for educators.",
+        "Architected and built the unified SARDO (DepEd School Form 2 Attendance Helper) mobile ecosystem, launching native iOS (Swift, SwiftUI, `@Observable`, SwiftData) and Android (Kotlin, Jetpack Compose, Room DB, Hilt, MVVM) apps, saving a day in a month.",
         "Engineered an on-device OpenXML spreadsheet engine (low-level ZIP compression & XML tree parsing) to programmatically edit, compute complex attendance sums, and compile official government spreadsheets without external server dependencies.",
         "Designed and implemented an interactive, animated date navigation header with built-in custom date pickers and day-stepping animations matching premium HIG and Material Design 3 paradigms.",
         "Designed a hybrid freemium monetization architecture enabling 3 free spreadsheet exports with full feature previews, seamlessly linked with local device-state tracking to ensure reliable and tamper-proof access control.",
@@ -102,15 +90,14 @@ const resumeData = {
       ],
     },
     {
-      title: "Technical Architect & Lead Developer – Multi-Vendor NetDevOps Platform",
+      title: "Technical Architect & Lead Developer – Sipartech Automation Platform",
       details: "2025–Present",
       points: [
-        "Architected and engineered a stateless NetDevOps Portal & Orchestrator API (Node.js, TypeScript, Express, React), completely replacing legacy network orchestration systems to achieve scalable, modern service lifecycle management.",
+        "Architected and engineered a stateless Sipartech Portal & Orchestrator API (Node.js, TypeScript, Express, React), completely replacing legacy network orchestration systems to achieve scalable, modern service lifecycle management.",
         "Implemented a reactive, scan-less Zero Touch Provisioning (ZTP) workflow leveraging Kea DHCP option 67 boot redirection, temporary management IP subnets, and automated SSH-based device bootstrap/upgrade agents.",
         "Designed and built an Audit-Driven Configuration Reconciliation engine, incorporating a side-by-side 3-Pane Configuration Audit View (Cisco NSO Intent vs. Running Hardware vs. Diff) for manual drift resolution (Sync-From/Re-deploy).",
         "Pioneered service-aware orchestration paradigms, displaying real-time client service dependencies (Transit IP BGP, EVPN E-Line) to run pre-deployment operational impact analysis and mitigate accidental network downtime.",
-        "Developed custom NetBox data model extensions (custom fields like `nso_device_id`, `nso_sync_state`, and `interface_role`) to map ephemeral NSO check-sync/fleet-poll states, utilizing NetBox as the single Source of Truth (SoT).",
-        "Enforced strict multi-vendor interface description standards via regex-based nomenclature checks (`CUST : <Client> [<Service>] [EPL <BW>]`) during automated port-termination provisioning.",
+        "Developed custom NetBox data model extensions to map ephemeral NSO check-sync/fleet-poll states, utilizing NetBox as the single Source of Truth (SoT).",
       ],
     },
     {
@@ -141,7 +128,7 @@ const resumeData = {
       tags: ["SwiftUI", "Jetpack Compose", "OpenXML", "SwiftData", "Hilt"]
     },
     {
-      title: "NetDevOps Automation Portal",
+      title: "Sipartech Network Automation Platform",
       icon: "🔌",
       description: "Zero Touch Provisioning (ZTP) Option 67 boot redirection, 3-pane configuration drift reconciliation engine, and custom NetBox schema mapping for multi-vendor network orchestrations.",
       tags: ["NestJS", "React", "Cisco NSO", "NetBox", "DHCP ZTP"]
@@ -189,7 +176,7 @@ const Resume: React.FC = () => {
     try {
       // Small timeout to allow render cycle to flush
       await new Promise(resolve => setTimeout(resolve, 300));
-      
+
       const element = printRef.current;
       const canvas = await html2canvas(element, {
         scale: 2, // Double resolution for ultra sharp print
@@ -286,7 +273,7 @@ const Resume: React.FC = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="profile-image-container">
             <div className="scan-line"></div>
             {imgError || !resumeData.profileImage ? (
