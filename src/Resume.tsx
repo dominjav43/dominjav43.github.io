@@ -141,12 +141,6 @@ const resumeData = {
       tags: ["SwiftUI", "Jetpack Compose", "OpenXML", "SwiftData", "Hilt"]
     },
     {
-      title: "Everything Claude Code (ECC)",
-      icon: "🤖",
-      description: "Custom framework orchestrating 30+ domain agents and 140+ workflow skills with autonomous recovery loops, TDD gates, cost-aware model routing, and Open Design.",
-      tags: ["Agentic AI", "TypeScript", "MCP Servers", "LLM Evals", "Context Opt"]
-    },
-    {
       title: "NetDevOps Automation Portal",
       icon: "🔌",
       description: "Zero Touch Provisioning (ZTP) Option 67 boot redirection, 3-pane configuration drift reconciliation engine, and custom NetBox schema mapping for multi-vendor network orchestrations.",
