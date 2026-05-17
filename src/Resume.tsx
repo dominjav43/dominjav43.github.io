@@ -319,25 +319,6 @@ const Resume: React.FC = () => {
           </div>
         </header>
 
-        {/* Dynamic Metric Counter Panels */}
-        <div className="stats-grid">
-          <div className="stat-card">
-            <span className="stat-number">30+</span>
-            <span className="stat-label">AI Agents Engineered</span>
-          </div>
-          <div className="stat-card">
-            <span className="stat-number">140+</span>
-            <span className="stat-label">Custom Workflow Skills</span>
-          </div>
-          <div className="stat-card">
-            <span className="stat-number">10k+</span>
-            <span className="stat-label">Active App Users</span>
-          </div>
-          <div className="stat-card">
-            <span className="stat-number">100%</span>
-            <span className="stat-label">TDD / CI Green Builds</span>
-          </div>
-        </div>
 
         {/* Tab Headers */}
         <div className="tabs-header">
