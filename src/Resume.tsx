@@ -45,7 +45,7 @@ const resumeData = {
     {
       category: "Agentic AI & LLM Orchestration",
       skills:
-        "Specialized Agent Design (ECC), Open Design (nexu-io/open-design), Multi-Agent Fleet Orchestration, Loop Operators, Context/Token Optimization, TDD-guided AI Development, Custom MCP Servers",
+        "Specialized Agent Design (ECC), PRP Workflows (PRD/Plan/Implement), Ralph Autonomous Loops, Open Design (nexu-io/open-design), Multi-Agent Fleet Orchestration, Loop Operators, Context/Token Optimization, TDD-guided AI Development, Custom MCP Servers",
     },
     {
       category: "Infrastructure & Cloud Automation",
@@ -147,6 +147,8 @@ const resumeData = {
   ],
   skills: [
     "Specialized Agent Design (ECC)",
+    "PRP Workflows (PRD/Plan/Implement)",
+    "Ralph Autonomous Loops",
     "Open Design (nexu-io/open-design)",
     "Multi-Agent Fleet Orchestration",
     "Swift/SwiftUI & `@Observable`",
