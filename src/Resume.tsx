@@ -425,16 +425,18 @@ const Resume: React.FC = () => {
             <section className="tab-pane-skills">
               <h2>Verified Skill Endorsements</h2>
               <div className="skills-container">
-                <div className="skill-group">
-                  <h4>Full Technical Stack</h4>
-                  <div className="skill-chips">
-                    {resumeData.skills.map((skill, idx) => (
-                      <span key={idx} className="skill-chip">
-                        {skill}
-                      </span>
-                    ))}
+                {resumeData.coreCompetencies.map((comp, idx) => (
+                  <div key={idx} className="skill-group">
+                    <h4>{comp.category}</h4>
+                    <div className="skill-chips">
+                      {comp.skills.split(/,\s+(?![^()]*\))/).map((skill, sIdx) => (
+                        <span key={sIdx} className="skill-chip">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                ))}
               </div>
             </section>
           )}
