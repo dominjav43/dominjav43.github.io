@@ -30,7 +30,6 @@ const resumeData = {
   profileImage: "/profile.jpg", // Using a local image from the `public` folder is more reliable.
   contact: {
     location: "Camarines Sur, Philippines",
-    website: "https://sargo.ph",
     email: "dominjav43@gmail.com",
     github: "https://github.com/dominjav43",
   },
