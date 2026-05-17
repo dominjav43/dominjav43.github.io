@@ -115,7 +115,7 @@ const resumeData = {
       points: [
         "Architected scalable EV backend platforms on AWS and OVH, handling thousands of concurrent connections using a microservices-based model.",
         "Designed and implemented dynamic OCPP (Open Charge Point Protocol) WebSocket traffic splitting on Traefik Load Balancer using custom PathRegexp routing rules, enabling seamless, zero-downtime charger migration and blue-green API deployments.",
-        "Optimized Flyway database migration architectures using containerized Kubernetes init jobs to ensure atomic, zero-downtime schema deployments under concurrent load, eliminating manual DB interventions.",
+        "Optimized Flyway database migrations via Kubernetes init jobs, achieving fully automated, atomic schema updates under high concurrent loads with zero deployment downtime.",
         "Automated resource provisioning, scaling, Keycloak & Authentik identity/access management, and secure secrets handling using SOPS and HashiCorp Vault.",
       ],
     },
