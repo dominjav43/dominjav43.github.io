@@ -209,6 +209,14 @@ const engineeringOperations: IOperationDomain[] = [
       "SteVe community upgrade migration planning across development, staging, and production environment layers.",
     ],
   },
+  {
+    title: "Leadership & Stakeholder Communication",
+    items: [
+      "Spearheaded daily standup meetings for the development team across Sipartech, E55C, and WibX — managing blockers, priority alignment, and sprint cadence.",
+      "Served as direct point of contact in stakeholder meetings, translating technical architecture decisions into business outcomes and managing cross-team expectations.",
+      "Facilitated cross-functional coordination between network engineers, DevOps, QA, and product stakeholders across concurrent workstreams.",
+    ],
+  },
 ];
 
 const Resume: React.FC = () => {
@@ -502,7 +510,7 @@ const Resume: React.FC = () => {
 
         <h2>Engineering Operations</h2>
         <p style={{ fontSize: "10px", lineHeight: "1.4", color: "#3d3d3a", margin: "0 0 6px 0" }}>
-          Documentation &amp; Specification · Testing &amp; QA · Incident &amp; Release Management
+          Documentation &amp; Specification · Testing &amp; QA · Incident &amp; Release Management · Leadership &amp; Stakeholder Communication
         </p>
       </div>
     </div>
