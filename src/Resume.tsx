@@ -479,12 +479,31 @@ const Resume: React.FC = () => {
               <span className="print-job-dates">{job.details}</span>
             </div>
             <ul className="print-job-list">
-              {job.points.slice(0, 3).map((pt, pIdx) => (
+              {job.points.slice(0, 4).map((pt, pIdx) => (
                 <li key={pIdx}>{renderFormattedText(pt)}</li>
               ))}
             </ul>
           </div>
         ))}
+
+        <h2>Featured Projects</h2>
+        {resumeData.projects.map((proj, idx) => (
+          <div key={idx} className="print-job-entry">
+            <div className="print-job-header">
+              <span>{proj.icon} {proj.title}</span>
+            </div>
+            <ul className="print-job-list">
+              {proj.achievements.slice(0, 2).map((a, aIdx) => (
+                <li key={aIdx}>{a}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+
+        <h2>Engineering Operations</h2>
+        <p style={{ fontSize: "10px", lineHeight: "1.4", color: "#3d3d3a", margin: "0 0 6px 0" }}>
+          Documentation &amp; Specification · Testing &amp; QA · Incident &amp; Release Management
+        </p>
       </div>
     </div>
   );
