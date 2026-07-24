@@ -8,15 +8,10 @@ import {
   FiDownload,
   FiSun,
   FiMoon,
-  FiCpu,
-  FiBriefcase,
-  FiCode,
-  FiZap,
 } from "react-icons/fi";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
-// --- DATA ---
 interface IJob {
   title: string;
   details: string;
@@ -29,10 +24,15 @@ interface ICompetency {
   skills: string;
 }
 
+interface IOperationDomain {
+  title: string;
+  items: string[];
+}
+
 const resumeData = {
   name: "Dominic Javier",
-  title: "Technical Leader | DevOps & AI Engineer | Full-Stack Mobile Architect",
-  profileImage: "/profile.jpg", // Graceful fallback is implemented in UI
+  title: "Technical Leader | DevOps & AI Engineer | Full-Stack Architect",
+  profileImage: "/profile.jpg",
   contact: {
     location: "Camarines Sur, Philippines",
     email: "dominjav43@gmail.com",
@@ -40,7 +40,7 @@ const resumeData = {
     website: "https://dominjav43.github.io",
   },
   summary:
-    "Hands-on technical leader, mobile architect, and DevOps engineer with extensive experience building full-stack applications, robust iOS & Android ecosystems, and cloud/network automation pipelines. I lead engineering teams to deliver premium, secure solutions, specializing in agent-native design-to-code pipelines (Open Design), on-device OpenXML compilation, scalable EV charging infrastructures, and automated multi-vendor networking. Proficient in translating complex business or compliance requirements into production-grade systems.",
+    "Hands-on technical leader, full stack architect, and DevOps engineer with extensive experience building full-stack applications, robust iOS & Android ecosystems, and cloud/network automation pipelines. I lead engineering teams to deliver premium, secure solutions, specializing in agent-native design-to-code pipelines (Open Design), on-device OpenXML compilation, scalable EV charging infrastructures, and automated multi-vendor networking. Proficient in translating complex business or compliance requirements into production-grade systems. Beyond implementation, I own the full engineering lifecycle — architecture documentation, functional specification, QA planning, incident response, and release management across production platforms.",
   coreCompetencies: [
     {
       category: "Agentic AI & LLM Orchestration",
@@ -76,11 +76,15 @@ const resumeData = {
       category: "UI/UX & Design Systems",
       skills: "Open Design (nexu-io/open-design), Figma design-to-code tokens, portable DESIGN.md systems, high-fidelity interactive mockups",
     },
+    {
+      category: "Technical PM & Engineering Documentation",
+      skills: "System architecture documentation, functional specification authoring, QA test planning, incident response & postmortems, release management & changelogs, user/admin guide authoring, code review & design audit facilitation, engineering standards definition",
+    },
   ] as ICompetency[],
   experience: [
     {
       title: "Founder & Lead Engineer – SARDO Mobile Ecosystem",
-      details: "2024–Present",
+      details: "2026\u2013Present",
       coreExpertise: "iOS (Swift, SwiftUI, `@Observable`, SwiftData), Android (Kotlin, Jetpack Compose, Room, Hilt), OpenXML, MVVM, TDD",
       points: [
         "**Architected** and launched the unified SARDO (DepEd School Form 2 Attendance Helper) mobile ecosystem, delivering native iOS (Swift, SwiftUI, `@Observable`, SwiftData) and Android (Kotlin, Jetpack Compose, Room, Hilt) applications that reclaim up to 8 hours of monthly administrative overhead per educator.",
@@ -93,19 +97,18 @@ const resumeData = {
     },
     {
       title: "Technical Architect & Lead Developer – Sipartech Automation Platform",
-      details: "2025–Present",
+      details: "2025\u2013Present",
       coreExpertise: "Node.js, TypeScript, Express, React, NestJS, Kea DHCP (ZTP Option 67), NetBox API, Cisco NSO, YANG",
       points: [
         "**Architected** and engineered a stateless Sipartech Portal & Orchestrator API (Node.js, TypeScript, Express, React), completely replacing legacy network orchestration systems to achieve scalable, modern service lifecycle management.",
         "**Spearheaded** a reactive, scan-less Zero Touch Provisioning (ZTP) workflow leveraging Kea DHCP option 67 boot redirection, temporary management IP subnets, and automated SSH-based device bootstrap/upgrade agents.",
-        "**Designed** and built an Audit-Driven Configuration Reconciliation engine with a 3-pane visual audit view, reducing human error in network drift resolution by 70%.",
         "**Pioneered** service-aware orchestration paradigms, displaying real-time client service dependencies (Transit IP BGP, EVPN E-Line) to run pre-deployment operational impact analysis and mitigate accidental network downtime.",
         "**Engineered** custom NetBox data model extensions to map ephemeral NSO check-sync/fleet-poll states, utilizing NetBox as the single Source of Truth (SoT).",
       ],
     },
     {
       title: "Cisco NSO Multi-Vendor Interconnect Services Lead",
-      details: "2025–Present",
+      details: "2025\u2013Present",
       coreExpertise: "Cisco NSO, YANG, RFM (Reactive Fast Maps), Python, Java, Equinix Fabric & IX APIs, Megaport API, NetBox",
       points: [
         "**Spearheaded** the design and implementation of Cisco NSO-based multi-vendor interconnect services using RFM (Reactive Fast Maps), extending YANG models and Python orchestration logic to support Equinix Fabric and IX connections with vendor-specific options and lifecycle handling.",
@@ -115,57 +118,101 @@ const resumeData = {
     },
     {
       title: "EV Industry – Infrastructure & Systems Architect",
-      details: "2024–Present",
+      details: "2024\u2013Present",
       coreExpertise: "AWS, OVH, Kubernetes (EKS), Traefik LB, OCPP, Flyway, SOPS, HashiCorp Vault, Keycloak, Authentik",
       points: [
         "**Architected** scalable EV backend platforms on AWS and OVH, handling thousands of concurrent connections using a microservices-based model.",
         "**Engineered** and implemented dynamic OCPP (Open Charge Point Protocol) WebSocket traffic splitting on Traefik Load Balancer using custom PathRegexp routing rules, enabling seamless, zero-downtime charger migration and blue-green API deployments.",
-        "**Optimized** Flyway database migrations via Kubernetes init jobs, achieving fully automated, atomic schema updates under high concurrent loads with zero deployment downtime.",
+        "**Optimized** Flyway database migrations via Kubernetes init jobs, achieving fully automated, atomic schema updates under high concurrent loads",
         "**Automated** resource provisioning, scaling, Keycloak & Authentik identity/access management, and secure secrets handling using SOPS and HashiCorp Vault.",
+        "**Led** production stress testing campaigns validating 4,000 concurrent charge boxes with zero errors — eliminated DB bottlenecks (query latency 23s \u2192 <10ms, MySQL CPU 100% \u2192 <20%) and authored AWS-to-OVH migration analysis driving 50% operating cost reduction.",
       ],
     },
   ] as IJob[],
   projects: [
     {
       title: "SARDO DepEd SF2 Ecosystem",
-      icon: "📱",
-      description: "Native iOS (Swift, SwiftUI, `@Observable`, SwiftData) and Android (Kotlin, Compose, Room, Hilt) apps automating school report collation via on-device OpenXML sheet compilation.",
+      icon: "\uD83D\uDCF1",
+      description: "Native iOS (Swift, SwiftUI, SwiftData) and Android (Kotlin, Compose, Room, Hilt) apps automating school report collation via on-device OpenXML sheet compilation.",
+      achievements: [
+        "Designed freemium monetization architecture with local device-state tracking for tamper-proof access control, balancing revenue with user trust.",
+        "Engineered on-device OpenXML spreadsheet engine that compiles government-compliant attendance reports without server dependencies.",
+        "Established TDD pipelines with automated unit, UI, and concurrency test cycles across both platforms.",
+        "Authored cross-platform architecture documentation covering SwiftData/Room schemas, MVVM state flow, and deployment workflows.",
+      ],
       tags: ["SwiftUI", "Jetpack Compose", "OpenXML", "SwiftData", "Hilt"]
     },
     {
       title: "Sipartech Network Automation Platform",
-      icon: "🔌",
-      description: "Zero Touch Provisioning (ZTP) Option 67 boot redirection, 3-pane configuration drift reconciliation engine, and custom NetBox schema mapping for multi-vendor network orchestrations.",
+      icon: "\uD83D\uDD0C",
+      description: "Multi-vendor network automation platform replacing legacy Prelude — ZTP, configuration reconciliation, and service orchestration.",
+      achievements: [
+        "Architected the complete platform and documented system design, functional requirements, and API contracts for a multi-vendor NSO-based automation replacement.",
+        "Specified and delivered user, admin, and install guides alongside ZTP templates, DHCP server configuration, and device onboarding workflows.",
+        "Led QA planning with formal test coverage and regression reviews for customer port provisioning, EVPN E-Line, and device sync scenarios.",
+        "Chaired code review audits comparing implementation fidelity against design specifications across major feature MRs.",
+      ],
       tags: ["NestJS", "React", "Cisco NSO", "NetBox", "DHCP ZTP"]
     },
     {
-      title: "EV Backend Platforms",
-      icon: "⚡",
-      description: "OCPP WebSocket traffic splitting (Traefik LB regex), containerized Flyway migrations on AWS & OVH Kubernetes.",
-      tags: ["Kubernetes", "Traefik", "Flyway", "AWS", "OCPP"]
+      title: "E55C EV Charging Infrastructure Platform",
+      icon: "\u26A1",
+      description: "Production EV charging backend (SteVe OCPP + angus-api OCPI bridge) stress-tested and optimized for thousands of concurrent chargers across multiple EMSPs.",
+      achievements: [
+        "Led production stress test campaigns across 4,000 simulated charge boxes (8,000 connectors) — identified and eliminated LOCK TABLES bottlenecks via UNIQUE constraint migration and INSERT IGNORE rewrite, reducing avg query latency from 23s to <10ms.",
+        "Performed deep database optimization across 3 critical bottlenecks: rewrote OCPP query views eliminating 706k-row temp tables (30s \u2192 <10ms), fixed window function full-table scans (1.58M rows \u2192 2 rows), reduced MySQL CPU from 100% to <20%.",
+        "Stress-validated platform stability and resource profiles at scale — zero errors, zero orphans, sustained 25-30% CPU at 1,400+ OCPP RPM — de-risking the infrastructure migration from AWS to OVH.",
+        "Authored discrepancy report mapping AWS vs OVH production resources across 9 dimensions (compute, storage, networking, auth, observability), driving resource reconfiguration that reduced operating costs by 50%.",
+      ],
+      tags: ["Java", "OCPP", "OCPI", "AWS", "OVH", "Kubernetes", "MongoDB"]
+    },
+    {
+      title: "WibX Internet Exchange Automation",
+      icon: "\uD83C\uDF10",
+      description: "Multi-vendor IX automation platform integrating Cisco NSO, Equinix Fabric/IX, and Megaport for automated interconnect provisioning.",
+      achievements: [
+        "Architected IX automation patterns (provisioning, polling, external sync) integrating NSO, Equinix APIs, and NetBox as system of record.",
+        "Authored software architecture docs, error handling standards, and NETCONF/NED runbooks for multi-vendor device orchestration.",
+        "Designed customer circuit and port lifecycle models with provisioning workflows and status state machines.",
+        "Defined engineering standards for API design, error codes, and code review processes across the automation platform.",
+      ],
+      tags: ["Cisco NSO", "Equinix", "Megaport", "NetBox", "BIRD"]
     }
   ],
-  skills: [
-    "Agentic Workflows (ECC)",
-    "PRP Workflows (PRD/Plan/Implement)",
-    "Ralph Autonomous Loops",
-    "Open Design (nexu-io/open-design)",
-    "Multi-Agent Fleet Orchestration",
-    "Swift/SwiftUI & `@Observable`",
-    "Kotlin & Jetpack Compose",
-    "Cisco NSO & YANG Automation",
-    "NetBox Integration",
-    "Kubernetes & Terraform",
-    "Docker, Traefik LB & Coolify",
-    "Flyway DB Migrations",
-    "Test-Driven Development (TDD)",
-    "Keycloak, Authentik & Cognito OAuth2"
-  ]
 };
 
+const engineeringOperations: IOperationDomain[] = [
+  {
+    title: "Documentation & Specification",
+    items: [
+      "System architecture documentation for 4 production platforms — EV charging, telecom automation, mobile, and interconnect.",
+      "Functional requirements and technical specifications driving implementation plans and service package designs.",
+      "User guides, admin guides, and upgrade instructions enabling operator self-sufficiency across platforms.",
+      "Cross-project design systems with tokenized CSS variables and component documentation.",
+    ],
+  },
+  {
+    title: "Testing & Quality Assurance",
+    items: [
+      "Production stress test campaigns including cluster resource audits, MongoDB CPU root cause analysis, and fix validation.",
+      "Quality assurance test plans for EVPN E-Line provisioning, sync poller reliability, and device synchronization flows.",
+      "Code review audits comparing implementation fidelity against design specifications across major feature MRs.",
+      "Regression test coverage reviews for critical workflows (customer port provisioning, circuit lifecycle).",
+    ],
+  },
+  {
+    title: "Incident & Release Management",
+    items: [
+      "Production incident postmortems: sustained database load after mass charger reboots, Web UI performance degradation under load.",
+      "Root cause analyses for OCPI token sync failures across EMSPs and MongoDB CPU spikes under concurrent stress.",
+      "Multi-platform release versioning strategy with structured changelogs tracking every environment deployment.",
+      "SteVe community upgrade migration planning across development, staging, and production environment layers.",
+    ],
+  },
+];
+
 const Resume: React.FC = () => {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-  const [activeTab, setActiveTab] = useState<"summary" | "experience" | "projects" | "skills">("summary");
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
   const [imgError, setImgError] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
 
@@ -181,14 +228,13 @@ const Resume: React.FC = () => {
     setIsDownloading(true);
 
     try {
-      // Small timeout to allow render cycle to flush
       await new Promise(resolve => setTimeout(resolve, 300));
 
       const element = printRef.current;
       const canvas = await html2canvas(element, {
-        scale: 2, // Double resolution for ultra sharp print
+        scale: 2,
         useCORS: true,
-        backgroundColor: "#ffffff",
+        backgroundColor: "#f5f4ed",
         logging: false
       });
 
@@ -196,7 +242,6 @@ const Resume: React.FC = () => {
       const imgWidth = canvas.width;
       const imgHeight = canvas.height;
 
-      // A4 dimensions in mm
       const pdfWidth = 210;
       const pdfHeight = (imgHeight * pdfWidth) / imgWidth;
 
@@ -215,7 +260,6 @@ const Resume: React.FC = () => {
     }
   };
 
-  // Render Markdown bold (**text**) and inline code (`text`) properly
   const renderFormattedText = (text: string) => {
     const parts = text.split(/(\*\*.*?\*\*|`.*?`)/g);
     return parts.map((part, index) => {
@@ -229,23 +273,14 @@ const Resume: React.FC = () => {
     });
   };
 
-  // Safe Profile Icon Fallback
   const initials = resumeData.name
     .split(" ")
     .map(n => n[0])
     .join("");
 
-
   return (
     <div className={`portfolio-wrapper ${theme === "dark" ? "dark-theme" : ""}`}>
-      {/* Background Orbs */}
-      <div className="ambient-orbs">
-        <div className="orb orb-1"></div>
-        <div className="orb orb-2"></div>
-      </div>
-
-      {/* Floating Theme / Controls Top Bar */}
-      <div className="floating-controls">
+      <div className="controls-bar">
         <button
           onClick={toggleTheme}
           className="control-btn"
@@ -265,23 +300,15 @@ const Resume: React.FC = () => {
         </button>
       </div>
 
-      {/* Interactive Main Board */}
       <div className="resume-container" ref={resumeRef}>
-        {/* Header */}
         <header className="resume-header">
-          <div className="header-main">
+          <div className="header-content">
             <h1>{resumeData.name}</h1>
-            <p className="title">{resumeData.title}</p>
-            <div className="contact-info">
+            <p className="title-line">{resumeData.title}</p>
+            <div className="contact-row">
               <div className="contact-item">
                 <FiMapPin className="contact-icon" />
                 <span>{resumeData.contact.location}</span>
-              </div>
-              <div className="contact-item">
-                <FiGlobe className="contact-icon" />
-                <a href={resumeData.contact.website} target="_blank" rel="noopener noreferrer">
-                  {resumeData.contact.website.replace("https://", "")}
-                </a>
               </div>
               <div className="contact-item">
                 <FiMail className="contact-icon" />
@@ -293,28 +320,17 @@ const Resume: React.FC = () => {
                   {resumeData.contact.github.replace("https://github.com/", "")}
                 </a>
               </div>
+              <div className="contact-item">
+                <FiGlobe className="contact-icon" />
+                <a href={resumeData.contact.website} target="_blank" rel="noopener noreferrer">
+                  {resumeData.contact.website.replace("https://", "")}
+                </a>
+              </div>
             </div>
           </div>
-
           <div className="profile-image-container">
-            <div className="scan-line"></div>
             {imgError || !resumeData.profileImage ? (
-              <div
-                style={{
-                  width: "140px",
-                  height: "140px",
-                  borderRadius: "50%",
-                  background: "var(--accent-gradient)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: "white",
-                  fontSize: "2.5em",
-                  fontWeight: 800,
-                  fontFamily: "var(--font-display)",
-                  border: "4px solid var(--bg-secondary)"
-                }}
-              >
+              <div className="profile-initials">
                 {initials}
               </div>
             ) : (
@@ -328,141 +344,114 @@ const Resume: React.FC = () => {
           </div>
         </header>
 
-
-        {/* Tab Headers */}
-        <div className="tabs-header">
-          <button
-            onClick={() => setActiveTab("summary")}
-            className={`tab-btn ${activeTab === "summary" ? "active" : ""}`}
-          >
-            <FiZap style={{ marginRight: "6px" }} /> Summary
-          </button>
-          <button
-            onClick={() => setActiveTab("experience")}
-            className={`tab-btn ${activeTab === "experience" ? "active" : ""}`}
-          >
-            <FiBriefcase style={{ marginRight: "6px" }} /> Professional Exp
-          </button>
-          <button
-            onClick={() => setActiveTab("projects")}
-            className={`tab-btn ${activeTab === "projects" ? "active" : ""}`}
-          >
-            <FiCode style={{ marginRight: "6px" }} /> Featured Projects
-          </button>
-          <button
-            onClick={() => setActiveTab("skills")}
-            className={`tab-btn ${activeTab === "skills" ? "active" : ""}`}
-          >
-            <FiCpu style={{ marginRight: "6px" }} /> Skills Matrix
-          </button>
-        </div>
-
-        {/* Tab Content Display */}
-        <div className="tab-content">
-          {activeTab === "summary" && (
-            <section className="tab-pane-summary">
-              <h2>Executive Summary</h2>
-              <p style={{ fontSize: "1.05em", lineHeight: "1.7", color: "var(--text-secondary)", marginBottom: "30px" }}>
-                {resumeData.summary}
-              </p>
-
-              <h2>Core Architecture Domains</h2>
-              <div className="competency-grid">
-                {resumeData.coreCompetencies.map((comp, idx) => (
-                  <div key={idx} className="competency-card">
-                    <h4>{comp.category}</h4>
-                    <p>{comp.skills}</p>
-                  </div>
-                ))}
+        <section>
+          <div className="section-head">
+            <span className="section-num">01</span>
+            <h2>Summary</h2>
+          </div>
+          <p className="summary-body">{resumeData.summary}</p>
+          <div className="competency-grid">
+            {resumeData.coreCompetencies.map((comp, idx) => (
+              <div key={idx} className="competency-card">
+                <h4>{comp.category}</h4>
+                <p>{comp.skills}</p>
               </div>
-            </section>
-          )}
+            ))}
+          </div>
+        </section>
 
-          {activeTab === "experience" && (
-            <section className="tab-pane-experience">
-              <h2>Professional Experience Timeline</h2>
-              <div className="timeline">
-                {resumeData.experience.map((job, idx) => (
-                  <div key={idx} className="timeline-item">
-                    <div className="timeline-header">
-                      <h3 className="role-title">{job.title}</h3>
-                      {job.details && <span className="job-details">{job.details}</span>}
-                    </div>
-                    <ul className="job-bullet-list">
-                      {job.points.map((pt, pIdx) => (
-                        <li key={pIdx}>{renderFormattedText(pt)}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
+        <section>
+          <div className="section-head">
+            <span className="section-num">02</span>
+            <h2>Professional Experience</h2>
+          </div>
+          <div className="timeline">
+            {resumeData.experience.map((job, idx) => (
+              <div key={idx} className="timeline-item">
+                <div className="timeline-header">
+                  <h3 className="role-title">{job.title}</h3>
+                  {job.details && <span className="job-details">{job.details}</span>}
+                </div>
+                <ul className="job-bullet-list">
+                  {job.points.map((pt, pIdx) => (
+                    <li key={pIdx}>{renderFormattedText(pt)}</li>
+                  ))}
+                </ul>
               </div>
-            </section>
-          )}
+            ))}
+          </div>
+        </section>
 
-          {activeTab === "projects" && (
-            <section className="tab-pane-projects">
-              <h2>Featured Production Architectures</h2>
-              <div className="projects-grid">
-                {resumeData.projects.map((proj, idx) => (
-                  <div key={idx} className="project-card">
-                    <div className="project-icon-title">
-                      <span className="proj-icon">{proj.icon}</span>
-                      <h4>{proj.title}</h4>
-                    </div>
-                    <p>{proj.description}</p>
-                    <div className="project-tags">
-                      {proj.tags.map((tag, tIdx) => (
-                        <span key={tIdx} className="tag">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+        <section>
+          <div className="section-head">
+            <span className="section-num">03</span>
+            <h2>Featured Projects</h2>
+          </div>
+          <div className="projects-grid">
+            {resumeData.projects.map((proj, idx) => (
+              <div key={idx} className="project-card">
+                <div className="project-icon-title">
+                  <span className="proj-icon">{proj.icon}</span>
+                  <div>
+                    <h4>{proj.title}</h4>
+                    <p className="project-blurb">{proj.description}</p>
                   </div>
-                ))}
+                </div>
+                <ul className="project-achievements">
+                  {proj.achievements.map((a, aIdx) => (
+                    <li key={aIdx}>{a}</li>
+                  ))}
+                </ul>
+                <div className="project-tags">
+                  {proj.tags.map((tag, tIdx) => (
+                    <span key={tIdx} className="tag">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </section>
-          )}
+            ))}
+          </div>
+        </section>
 
-          {activeTab === "skills" && (
-            <section className="tab-pane-skills">
-              <h2>Verified Skill Endorsements</h2>
-              <div className="skills-container">
-                {resumeData.coreCompetencies.map((comp, idx) => (
-                  <div key={idx} className="skill-group">
-                    <h4>{comp.category}</h4>
-                    <div className="skill-chips">
-                      {comp.skills.split(/,\s+(?![^()]*\))/).map((skill, sIdx) => (
-                        <span key={sIdx} className="skill-chip">
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
+        <section>
+          <div className="section-head">
+            <span className="section-num">04</span>
+            <h2>Engineering Operations</h2>
+          </div>
+          <p className="summary-body">
+            Production engineering patterns applied across every platform I build — from documentation and
+            specification through testing, incident response, and release management.
+          </p>
+          <div className="ops-grid">
+            {engineeringOperations.map((domain, idx) => (
+              <div key={idx} className="ops-card">
+                <h4>{domain.title}</h4>
+                <ul className="ops-list">
+                  {domain.items.map((item, iIdx) => (
+                    <li key={iIdx}>{item}</li>
+                  ))}
+                </ul>
               </div>
-            </section>
-          )}
-        </div>
+            ))}
+          </div>
+        </section>
 
-        {/* Footer */}
-        <footer className="download-footer">
-          <span className="footer-text">© {new Date().getFullYear()} Dominic Javier. Handcrafted using React + Design Tokens.</span>
+        <footer className="resume-footer">
+          <span className="footer-text">© {new Date().getFullYear()} Dominic Javier. Typeset with kami &amp; terracotta.</span>
           <button onClick={handleDownloadPdf} className="download-btn" disabled={isDownloading}>
-            <FiDownload /> {isDownloading ? "Compiling PDF..." : "Download Resume PDF"}
+            <FiDownload /> {isDownloading ? "Compiling PDF\u2026" : "Download Resume PDF"}
           </button>
         </footer>
       </div>
 
-      {/* ------------------------------------------------------------- */}
-      {/* HIDDEN PRINT-OPTIMIZED DRAFT RENDER FOR ONE-PAGE A4 jsPDF     */}
-      {/* ------------------------------------------------------------- */}
       <div className="print-optimized-resume" ref={printRef}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "15px" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "12px" }}>
           <div>
             <h1>{resumeData.name}</h1>
             <div className="print-title">{resumeData.title}</div>
           </div>
-          <div style={{ textAlign: "right", fontSize: "10px", color: "#475569", fontWeight: 500, lineHeight: 1.4 }}>
+          <div style={{ textAlign: "right", fontSize: "10px", color: "#504e49", fontWeight: 400, lineHeight: 1.4 }}>
             <div>{resumeData.contact.location}</div>
             <div>{resumeData.contact.email}</div>
             <div>{resumeData.contact.website.replace("https://", "")}</div>
@@ -473,8 +462,8 @@ const Resume: React.FC = () => {
         <h2>Executive Summary</h2>
         <p>{resumeData.summary}</p>
 
-        <h2>Core Expertise & Skills Matrix</h2>
-        <div className="print-comp-grid" style={{ marginBottom: "5px" }}>
+        <h2>Core Expertise & Skills</h2>
+        <div className="print-comp-grid" style={{ marginBottom: "4px" }}>
           {resumeData.coreCompetencies.map((comp, idx) => (
             <div key={idx} className="print-comp-item">
               <strong>{comp.category}:</strong> {comp.skills}
