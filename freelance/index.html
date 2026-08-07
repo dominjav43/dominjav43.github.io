@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dominic Javier — Technical Leader · DevOps & AI Engineer</title>
+<meta name="description" content="Dominic Javier — Technical Leader, DevOps & AI Engineer, Full-Stack Architect. Building full-stack apps, iOS & Android ecosystems, and cloud/network automation pipelines.">
+<style>
+/* ────────────────────────────────────────────────────────────
+ * GitHub tokens (design-system/github) — bound verbatim.
+ * ──────────────────────────────────────────────────────────── */
+:root {
+  color-scheme: light;
+  --bg:           #ffffff;
+  --surface:      #f6f8fa;
+  --surface-warm: var(--surface);
+  --fg:   #1f2328;
+  --fg-2: #1f2328;
+  --muted: #656d76;
+  --meta:  #656d76;
+  --border:      #d0d7de;
+  --border-soft: #d8dee4;
+  --accent:        #0969da;
+  --accent-on:     #ffffff;
+  --accent-hover:  #0550ae;
+  --accent-active: color-mix(in oklab, var(--accent), black 14%);
+  --success: #1a7f37;
+  --warn:    #9a6700;
+  --danger:  #cf222e;
+  --font-display: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-body:    -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-mono:    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --text-xs:   12px;
+  --text-sm:   14px;
+  --text-base: 14px;
+  --text-lg:   16px;
+  --text-xl:   20px;
+  --text-2xl:  24px;
+  --text-3xl:  28px;
+  --text-4xl:  32px;
+  --leading-body:     1.5;
+  --leading-tight:    1.25;
+  --tracking-display: -0.01em;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-12: 48px;
+  --section-y-desktop: 64px;
+  --section-y-tablet:  48px;
+  --section-y-phone:   32px;
+  --radius-sm:   6px;
+  --radius-md:   6px;
+  --radius-lg:   12px;
+  --radius-pill: 9999px;
+  --elev-flat:   none;
+  --elev-ring:   0 0 0 1px var(--border);
+  --elev-raised: 0 1px 3px rgba(31, 35, 40, 0.12), 0 8px 24px rgba(66, 74, 83, 0.12);
+  --focus-ring: 0 0 0 3px rgba(9, 105, 218, 0.3);
+  --motion-fast:   80ms;
+  --motion-base:   200ms;
+  --ease-standard: ease-out;
+  --container-max:            1280px;
+  --container-gutter-desktop: 24px;
+  --container-gutter-tablet:  16px;
+  --container-gutter-phone:   16px;
+}
+/* ────────────────────────────────────────────────────────────
+ * Dark theme — GitHub DESIGN.md §2 dark tokens.
+ * ──────────────────────────────────────────────────────────── */
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:           #0d1117;              /* dark canvas */
+  --surface:      #161b22;              /* dark surface */
+  --surface-warm: var(--surface);
+  --fg:   #e6edf3;                      /* dark fg */
+  --fg-2: #e6edf3;
+  --muted: #8b949e;                     /* dark fg muted */
+  --meta:  #8b949e;
+  --border:      #30363d;              /* dark border */
+  --border-soft: #21262d;
+  --accent:        #4493f8;            /* dark accent (Primer blue, dark mode) */
+  --accent-on:     #ffffff;
+  --accent-hover:  #1f6feb;
+  --accent-active: color-mix(in oklab, var(--accent), black 14%);
+  --success: #3fb950;                  /* dark green */
+  --warn:    #d29922;
+  --danger:  #f85149;
+  --elev-raised: 0 1px 3px rgba(1, 4, 9, 0.5), 0 8px 24px rgba(1, 4, 9, 0.4);
+  --focus-ring: 0 0 0 3px rgba(68, 147, 248, 0.35);
+}
+/* ────────────────────────────────────────────────────────────
+ * base
+ * ──────────────────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--fg);
+  font-family:var(--font-body);font-size:var(--text-base);line-height:var(--leading-body);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;margin:0;color:var(--fg);line-height:var(--leading-tight);letter-spacing:normal}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+section{scroll-margin-top:64px}
+img,svg{display:block}
+::selection{background:color-mix(in oklab, var(--accent) 22%, transparent)}
+.container{max-width:var(--container-max);margin:0 auto;padding:0 var(--container-gutter-desktop)}
+.mono{font-family:var(--font-mono)}
+code{font-family:var(--font-mono);font-size:0.85em;background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius-sm);padding:1px 5px}
+
+/* ────────────────────────────────────────────────────────────
+ * header
+ * ──────────────────────────────────────────────────────────── */
+.header{
+  position:sticky;top:0;z-index:100;background:var(--bg);
+  border-bottom:1px solid var(--border);height:60px;
+}
+.header-inner{display:flex;align-items:center;gap:var(--space-4);max-width:var(--container-max);margin:0 auto;padding:0 var(--container-gutter-desktop);height:60px}
+.header .logo{display:flex;align-items:center;gap:8px;font-weight:600;font-size:var(--text-sm)}
+.header .logo .mark{
+  width:20px;height:20px;border-radius:var(--radius-sm);flex:none;background:var(--accent);
+  color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;font-weight:500;
+}
+.header-nav{display:flex;align-items:center;gap:2px;margin-left:auto}
+.header-nav a{
+  font-size:var(--text-sm);font-weight:500;color:var(--fg);padding:6px 12px;border-radius:var(--radius-sm);
+  min-height:40px;display:flex;align-items:center;transition:background var(--motion-fast) var(--ease-standard);
+}
+.header-nav a:hover{background:var(--surface)}
+.header-nav a:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.header-nav a .count{color:var(--muted);margin-left:4px}
+.header-cta{margin-left:var(--space-2)}
+.theme-toggle{
+  display:flex;align-items:center;justify-content:center;width:40px;height:40px;
+  border-radius:var(--radius-sm);border:1px solid transparent;background:transparent;
+  color:var(--muted);cursor:pointer;margin-left:var(--space-2);transition:color var(--motion-fast) var(--ease-standard), background var(--motion-fast) var(--ease-standard);
+}
+.theme-toggle:hover{color:var(--fg);background:var(--surface)}
+.theme-toggle:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.theme-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.theme-toggle .icon-moon{display:none}
+:root[data-theme="dark"] .theme-toggle .icon-moon{display:block}
+:root[data-theme="dark"] .theme-toggle .icon-sun{display:none}
+.header-burger{
+  display:none;margin-left:auto;width:40px;height:40px;border-radius:var(--radius-sm);
+  border:1px solid var(--border);background:transparent;color:var(--fg);cursor:pointer;align-items:center;justify-content:center;
+}
+.header-burger svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round}
+.header-burger:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+
+/* ────────────────────────────────────────────────────────────
+ * buttons
+ * ──────────────────────────────────────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  min-height:44px;padding:0 var(--space-4);border-radius:var(--radius-sm);
+  font-family:var(--font-body);font-weight:500;font-size:var(--text-sm);
+  cursor:pointer;border:1px solid transparent;transition:background var(--motion-fast) var(--ease-standard), border-color var(--motion-fast) var(--ease-standard), color var(--motion-fast) var(--ease-standard);
+  text-decoration:none;white-space:nowrap;
+}
+.btn:active{transform:translateY(1px)}
+.btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.btn-primary{background:var(--success);color:#fff;border-color:rgba(31,35,40,0.15);box-shadow:0 1px 0 rgba(31,35,40,0.1)}
+.btn-primary:hover{background:var(--success);filter:brightness(0.94)}
+.btn-primary:active{filter:brightness(0.88)}
+.btn-default{background:var(--surface);color:var(--fg);border-color:var(--border)}
+.btn-default:hover{background:color-mix(in oklab, var(--surface), black 3%)}
+.btn-outline{background:var(--bg);color:var(--accent);border-color:var(--border)}
+.btn-outline:hover{background:var(--accent);color:#fff}
+.btn-sm{min-height:36px;padding:0 var(--space-3);font-size:var(--text-xs)}
+
+/* ────────────────────────────────────────────────────────────
+ * profile hero
+ * ──────────────────────────────────────────────────────────── */
+.profile{padding:var(--space-8) 0 var(--space-6);border-bottom:1px solid var(--border)}
+.profile-grid{display:grid;grid-template-columns:296px 1fr;gap:var(--space-8);align-items:start}
+.profile-card{
+  border:1px solid var(--border);border-radius:var(--radius-md);background:var(--bg);
+  overflow:hidden;
+}
+.profile-banner{height:92px;background:var(--surface);border-bottom:1px solid var(--border)}
+.profile-avatar-wrap{display:flex;padding:0 var(--space-4) var(--space-3);margin-top:-52px}
+.profile-avatar{
+  width:104px;height:104px;border-radius:50%;flex:none;object-fit:cover;display:block;
+  border:4px solid var(--bg);background:var(--surface);
+}
+.profile-card .body{padding:0 var(--space-4) var(--space-4)}
+.profile-card h1{font-size:var(--text-2xl);font-weight:600}
+.profile-card .handle{font-size:var(--text-lg);color:var(--muted);margin-top:2px}
+.profile-card .bio{font-size:var(--text-sm);color:var(--fg);margin-top:var(--space-3)}
+.profile-meta{margin-top:var(--space-4);display:flex;flex-direction:column;gap:6px;font-size:var(--text-sm);color:var(--muted)}
+.profile-meta .row{display:flex;align-items:center;gap:8px}
+.profile-meta .row svg{width:14px;height:14px;flex:none;fill:currentColor}
+.profile-meta a{color:var(--fg);font-weight:500}
+.profile-meta a:hover{color:var(--accent)}
+.profile-cta{display:flex;gap:8px;margin-top:var(--space-4);flex-wrap:wrap}
+.profile-right{padding-top:var(--space-2)}
+.profile-right h2{font-size:var(--text-4xl);font-weight:600;letter-spacing:var(--tracking-display);line-height:1.15;max-width:20ch}
+.profile-right .sub{color:var(--muted);font-size:var(--text-base);margin-top:var(--space-3);max-width:62ch}
+.open-pill{
+  display:inline-flex;align-items:center;gap:8px;margin-top:var(--space-4);
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-pill);padding:6px 14px;
+  font-family:var(--font-mono);font-size:var(--text-xs);color:var(--fg);
+}
+.open-pill .dot{width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 0 0 color-mix(in oklab,var(--success) 55%,transparent);animation:pulse 2.4s infinite}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 color-mix(in oklab,var(--success) 55%,transparent)}
+  70%{box-shadow:0 0 0 7px transparent}
+  100%{box-shadow:0 0 0 0 transparent}
+}
+@media (prefers-reduced-motion: reduce){.open-pill .dot{animation:none}}
+.profile-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4);
+  margin-top:var(--space-5);border-top:1px solid var(--border);padding-top:var(--space-5);
+}
+.profile-stats .stat{display:flex;flex-direction:column;gap:2px}
+.profile-stats .stat .val{font-size:var(--text-2xl);font-weight:600;font-variant-numeric:tabular-nums;line-height:1.1}
+.profile-stats .stat .lab{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--muted);line-height:1.4}
+.profile-tags{margin-top:var(--space-5);display:flex;gap:6px;flex-wrap:wrap}
+.tag{
+  font-family:var(--font-mono);font-size:var(--text-xs);color:var(--accent);
+  background:color-mix(in oklab, var(--accent) 8%, var(--bg));border:1px solid color-mix(in oklab, var(--accent) 22%, var(--border));
+  border-radius:var(--radius-sm);padding:3px 9px;white-space:nowrap;
+}
+
+/* ────────────────────────────────────────────────────────────
+ * section head
+ * ──────────────────────────────────────────────────────────── */
+.section{padding:var(--section-y-desktop) 0}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-4);margin-bottom:var(--space-4)}
+.section-head h2{font-size:var(--text-xl);font-weight:600}
+.section-head .meta{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--muted)}
+.see-all{color:var(--accent);font-size:var(--text-sm);font-weight:500}
+.see-all:hover{text-decoration:underline}
+
+/* ────────────────────────────────────────────────────────────
+ * pinned work (repo cards)
+ * ──────────────────────────────────────────────────────────── */
+.repo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-4)}
+.repo{
+  border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-4);background:var(--bg);
+  display:flex;flex-direction:column;gap:var(--space-2);transition:border-color var(--motion-fast) var(--ease-standard);
+}
+.repo:hover{border-color:var(--accent)}
+.repo:focus-visible{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
+.repo .name{display:flex;align-items:center;gap:8px;font-size:var(--text-lg);font-weight:600;color:var(--accent)}
+.repo .name svg{width:15px;height:15px;flex:none;fill:currentColor}
+.repo .name a{color:var(--accent)}
+.repo .name a:hover{text-decoration:underline}
+.repo .name a:focus-visible{outline:none;text-decoration:underline;border-radius:var(--radius-sm);box-shadow:0 0 0 3px var(--accent)}
+.repo .desc{color:var(--muted);font-size:var(--text-sm);line-height:1.5;flex:1}
+.repo .foot{display:flex;align-items:center;gap:var(--space-4);font-family:var(--font-mono);font-size:var(--text-xs);color:var(--muted)}
+.repo .lang{display:flex;align-items:center;gap:5px}
+.repo .lang .dot{width:10px;height:10px;border-radius:50%}
+.lang-a{background:var(--accent)}.lang-b{background:var(--success)}.lang-c{background:var(--warn)}.lang-d{background:var(--muted)}.lang-e{background:var(--danger)}
+.repo .tags{display:flex;gap:6px;flex-wrap:wrap}
+.repo .tags .t{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--fg);background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius-sm);padding:2px 8px}
+
+/* ────────────────────────────────────────────────────────────
+ * skills (labels)
+ * ──────────────────────────────────────────────────────────── */
+.skills .label-grid{display:flex;flex-wrap:wrap;gap:8px}
+.label{
+  font-size:var(--text-xs);font-weight:500;padding:3px 10px;border-radius:var(--radius-pill);
+  color:var(--fg);background:var(--surface);border:1px solid var(--border-soft);
+}
+.label.on{background:color-mix(in oklab, var(--success) 14%, var(--bg));border-color:color-mix(in oklab, var(--success) 40%, var(--border-soft));color:color-mix(in oklab, var(--success), black 8%)}
+.label.off{background:var(--bg);border-color:var(--border-soft);color:var(--muted)}
+
+/* ────────────────────────────────────────────────────────────
+ * writing (list rows)
+ * ──────────────────────────────────────────────────────────── */
+.list{border:1px solid var(--border);border-radius:var(--radius-md);background:var(--bg);overflow:hidden}
+.list-row{
+  display:grid;grid-template-columns:1fr auto;gap:var(--space-4);align-items:center;
+  padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--border-soft);text-decoration:none;color:inherit;
+  transition:background var(--motion-fast) var(--ease-standard);
+}
+.list-row:last-child{border-bottom:none}
+a.list-row:hover{background:var(--surface)}
+a.list-row:focus-visible{outline:none;box-shadow:inset 0 0 0 2px var(--accent)}
+.list-row .ttl{font-weight:600;font-size:var(--text-base);color:var(--fg)}
+a.list-row .ttl:hover{color:var(--accent)}
+.list-row .sub{color:var(--muted);font-size:var(--text-xs);margin-top:3px;font-family:var(--font-mono)}
+.list-row .right{display:flex;align-items:center;gap:var(--space-3)}
+.list-row .right .date{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--muted);white-space:nowrap}
+.list-row .right .go{color:var(--accent);font-size:var(--text-lg)}
+.row-ok{color:var(--success)}
+
+/* ────────────────────────────────────────────────────────────
+ * process (bordered grid)
+ * ──────────────────────────────────────────────────────────── */
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4)}
+.proc{border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-4);background:var(--bg)}
+.proc .num{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--success);letter-spacing:0.06em;text-transform:uppercase}
+.proc h3{font-size:var(--text-lg);font-weight:600;margin:var(--space-2) 0 var(--space-2)}
+.proc p{color:var(--muted);font-size:var(--text-sm);line-height:1.5}
+.proc .stamp{margin-top:var(--space-3);font-family:var(--font-mono);font-size:var(--text-xs);color:var(--muted)}
+
+/* ────────────────────────────────────────────────────────────
+ * contact / form
+ * ──────────────────────────────────────────────────────────── */
+.contact-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:var(--space-6);align-items:start}
+.contact-info h2{font-size:var(--text-3xl);font-weight:600;line-height:1.2}
+.contact-info p{color:var(--muted);margin-top:var(--space-3);max-width:52ch}
+.contact-info .list{margin-top:var(--space-5)}
+.form-card{border:1px solid var(--border);border-radius:var(--radius-md);background:var(--bg);overflow:hidden}
+.form-head{background:var(--surface);border-bottom:1px solid var(--border);padding:var(--space-3) var(--space-4);font-size:var(--text-base);font-weight:600}
+.form-body{padding:var(--space-4);display:grid;gap:var(--space-4)}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:var(--text-sm);font-weight:500}
+.field label .req{color:var(--danger)}
+.field input,.field select{
+  min-height:44px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);
+  color:var(--fg);font-family:var(--font-body);font-size:var(--text-sm);padding:0 var(--space-3);
+  transition:border-color var(--motion-fast) var(--ease-standard);
+}
+.field select{appearance:none;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23656d76' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:34px}
+.field input::placeholder{color:var(--muted)}
+.field input:focus,.field select:focus{outline:none;border-color:var(--accent);box-shadow:var(--focus-ring)}
+.field input.invalid{border-color:var(--danger);box-shadow:0 0 0 3px color-mix(in oklab, var(--danger) 22%, transparent)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)}
+.form-err{font-size:var(--text-xs);color:var(--danger);min-height:18px;font-family:var(--font-mono)}
+.form-success{display:none;padding:var(--space-6);text-align:center}
+.form-success .ok{width:44px;height:44px;margin:0 auto var(--space-3);border-radius:50%;background:color-mix(in oklab,var(--success) 14%,var(--bg));color:var(--success);display:flex;align-items:center;justify-content:center}
+.form-success .ok svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.form-success h3{font-size:var(--text-xl);font-weight:600}
+.form-success p{color:var(--muted);font-size:var(--text-sm);margin-top:var(--space-2);max-width:40ch;margin-inline:auto}
+
+/* ────────────────────────────────────────────────────────────
+ * footer
+ * ──────────────────────────────────────────────────────────── */
+.footer{border-top:1px solid var(--border);padding:var(--space-5) 0}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap;font-size:var(--text-xs);color:var(--muted)}
+.footer .links{display:flex;gap:var(--space-4)}
+.footer .links a{color:var(--muted)}
+.footer .links a:hover{color:var(--accent)}
+
+/* ────────────────────────────────────────────────────────────
+ * responsive
+ * ──────────────────────────────────────────────────────────── */
+@media (max-width:1012px){
+  .profile-grid{grid-template-columns:1fr;gap:var(--space-6)}
+  .profile-card{max-width:420px}
+  .repo-grid{grid-template-columns:repeat(2,1fr)}
+  .proc-grid{grid-template-columns:repeat(2,1fr)}
+  .contact-grid{grid-template-columns:1fr}
+  .header-nav a{display:none}
+  .header-nav .header-cta{display:inline-flex}
+  .header-burger{display:flex}
+  .header-nav.open{position:fixed;top:60px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 16px 16px;gap:2px}
+  .header-nav.open a{display:flex}
+}
+@media (max-width:640px){
+  .container{padding:0 var(--container-gutter-phone)}
+  .header-inner{padding:0 var(--container-gutter-phone)}
+  .repo-grid{grid-template-columns:1fr}
+  .proc-grid{grid-template-columns:1fr}
+  .field-row{grid-template-columns:1fr}
+  .profile-right h2{font-size:var(--text-3xl)}
+  .profile-stats{grid-template-columns:repeat(2,1fr);row-gap:var(--space-4)}
+}
+</style>
+</head>
+<body>
+
+<!-- ──────────────────────────────────────── HEADER ─────────── -->
+<header class="header" data-od-id="site-header">
+  <div class="header-inner">
+    <a class="logo" href="#top" aria-label="Home"><span class="mark">D</span> dominicjavier</a>
+    <nav class="header-nav" id="headerNav" aria-label="Primary">
+      <a href="#work">Pinned <span class="count">4</span></a>
+      <a href="#skills">Skills</a>
+      <a href="#ops">Ops <span class="count">4</span></a>
+      <a href="#process">Process</a>
+      <a class="btn btn-primary header-cta" href="#contact">Hire me</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" data-od-id="theme-toggle">
+      <svg class="icon-sun" viewBox="0 0 16 16"><path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M8 1.5v1.5M8 13v1.5M2.35 2.35l1.06 1.06M12.59 12.59l1.06 1.06M1.5 8h1.5M13 8h1.5M2.35 13.65l1.06-1.06M12.59 3.41l1.06-1.06"/></svg>
+      <svg class="icon-moon" viewBox="0 0 16 16"><path d="M9.6 1.5a6.5 6.5 0 1 0 4.9 4.9.8.8 0 0 0-1.1-.95 5 5 0 1 1-3.84-3.84.8.8 0 0 0 .04-1.1Z"/></svg>
+    </button>
+    <button class="header-burger" id="headerBurger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="headerNav">
+      <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ──────────────────────────────────────── PROFILE ─────── -->
+  <section class="profile" data-od-id="profile">
+    <div class="container profile-grid">
+      <aside class="profile-card" data-od-id="profile-card">
+        <div class="profile-banner"></div>
+        <div class="profile-avatar-wrap">
+          <img class="profile-avatar" src="assets/profile.jpg" alt="Dominic Javier profile photo">
+        </div>
+        <div class="body">
+          <h1>Dominic Javier</h1>
+          <div class="handle">@dominjav43</div>
+          <p class="bio">Technical Leader · DevOps &amp; AI Engineer · Full-Stack Architect. I lead teams building full-stack apps, iOS &amp; Android ecosystems, and cloud/network automation pipelines.</p>
+          <div class="profile-meta">
+            <div class="row"><svg viewBox="0 0 16 16"><path d="M8 0a6 6 0 0 0-6 6c0 4.5 5.5 9.3 5.7 9.5a.5.5 0 0 0 .6 0C8.5 15.3 14 10.5 14 6A6 6 0 0 0 8 0Zm0 8.5A2.5 2.5 0 1 1 10.5 6 2.5 2.5 0 0 1 8 8.5Z"/></svg><span>Camarines Sur, Philippines · Remote</span></div>
+            <div class="row"><svg viewBox="0 0 16 16"><path d="M2.75 2h10.5A1.75 1.75 0 0 1 15 3.75v8.5A1.75 1.75 0 0 1 13.25 14H2.75A1.75 1.75 0 0 1 1 12.25v-8.5A1.75 1.75 0 0 1 2.75 2Zm.25 2v1.25h2.25V4H3ZM5.5 7.5V9H3V7.5h2.5Zm2.25 0V9H8V7.5h-.25ZM8 6v1.25h2.25V6H8Zm0-2v1.25h2.25V4H8Zm-2.5 4.75V10H3V8.75h2.5Zm2.25 0V10H8V8.75h-.25Zm.5 0V10H11V8.75H8.25Zm3.5 0V10H13V8.75h-1.25Zm0-2V6H13v2.75h-1.25Z"/></svg><a href="mailto:dominjav43@gmail.com">dominjav43@gmail.com</a></div>
+            <div class="row"><svg viewBox="0 0 16 16"><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm2.5 10.3 1.1-.6-.7-1.2-1.1.6.7 1.2Zm1-3.8.7-1.2-1.2-.7-.6 1.1 1.1.8Zm-5.1 1.4-1.1-.6-.7 1.2 1.2.7.6-1.3Zm1.6-4.1.7 1.2 1.1-.6-.6-1.2-1.2.6ZM8 6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/></svg><a href="https://dominjav43.github.io">dominjav43.github.io</a></div>
+            <div class="row"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.42 7.42 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><a href="https://github.com/dominjav43">github.com/dominjav43</a></div>
+          </div>
+          <div class="profile-cta">
+            <a class="btn btn-primary" href="#contact" data-od-id="cta-hire">Hire me</a>
+            <a class="btn btn-outline" href="#work" data-od-id="cta-work">View pinned</a>
+            <a class="btn btn-default" href="https://dominjav43.github.io" target="_blank" rel="noopener" data-od-id="cta-resume">Resume site</a>
+          </div>
+        </div>
+      </aside>
+
+      <div class="profile-right">
+        <span class="open-pill"><span class="dot"></span>Open to work · Q3–Q4 2026</span>
+        <h2>Full-stack apps, mobile ecosystems, and automation that scales.</h2>
+        <p class="sub">Hands-on technical leader and DevOps engineer specializing in agent-native design-to-code pipelines, on-device OpenXML compilation, scalable EV charging infrastructure, and automated multi-vendor networking.</p>
+        <div class="profile-stats" data-od-id="profile-stats">
+          <div class="stat"><div class="val">8h/mo</div><div class="lab">admin time reclaimed per educator</div></div>
+          <div class="stat"><div class="val">4,000</div><div class="lab">concurrent charge boxes · 0 errors</div></div>
+          <div class="stat"><div class="val">−50%</div><div class="lab">operating cost after migration</div></div>
+          <div class="stat"><div class="val">99.9%</div><div class="lab">database reliability</div></div>
+        </div>
+        <div class="profile-tags">
+          <span class="tag">SwiftUI</span><span class="tag">Kotlin</span><span class="tag">React</span><span class="tag">NestJS</span>
+          <span class="tag">Kubernetes</span><span class="tag">Cisco NSO</span><span class="tag">Terraform</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────────────────────────────── WORK ─────────── -->
+  <section class="section" id="work" data-od-id="work">
+    <div class="container">
+      <div class="section-head">
+        <h2>Pinned</h2>
+        <span class="meta">4 projects</span>
+      </div>
+      <div class="repo-grid">
+
+        <article class="repo" data-od-id="repo-sardo">
+          <div class="name">
+            <svg viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8Z"/></svg>
+            <a href="#contact">sardo-sf2</a>
+          </div>
+          <p class="desc">SARDO DepEd SF2 — native iOS &amp; Android ecosystem automating school report collation via on-device OpenXML spreadsheet compilation.</p>
+          <div class="foot">
+            <span class="lang"><span class="dot lang-a"></span>Swift</span>
+            <span class="lang"><span class="dot lang-c"></span>Kotlin</span>
+            <span>2026</span>
+          </div>
+          <div class="tags"><span class="t">SwiftUI</span><span class="t">Jetpack Compose</span><span class="t">OpenXML</span><span class="t">SwiftData</span><span class="t">Hilt</span></div>
+        </article>
+
+        <article class="repo" data-od-id="repo-sipartech">
+          <div class="name">
+            <svg viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8Z"/></svg>
+            <a href="#contact">sipartech-zip</a>
+          </div>
+          <p class="desc">Multi-vendor network automation platform replacing legacy orchestration — zero-touch provisioning, configuration reconciliation, and service lifecycle management.</p>
+          <div class="foot">
+            <span class="lang"><span class="dot lang-b"></span>TypeScript</span>
+            <span class="lang"><span class="dot lang-e"></span>Python</span>
+            <span>2025</span>
+          </div>
+          <div class="tags"><span class="t">NestJS</span><span class="t">React</span><span class="t">Cisco NSO</span><span class="t">NetBox</span><span class="t">Kea DHCP</span></div>
+        </article>
+
+        <article class="repo" data-od-id="repo-e55c">
+          <div class="name">
+            <svg viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8Z"/></svg>
+            <a href="#contact">e55c-ocpp</a>
+          </div>
+          <p class="desc">Production EV charging backend — OCPP + OCPI bridge stress-tested and optimized for thousands of concurrent chargers across multiple EMSPs.</p>
+          <div class="foot">
+            <span class="lang"><span class="dot lang-d"></span>Java</span>
+            <span class="lang"><span class="dot lang-b"></span>MongoDB</span>
+            <span>2024</span>
+          </div>
+          <div class="tags"><span class="t">OCPP</span><span class="t">OCPI</span><span class="t">AWS</span><span class="t">OVH</span><span class="t">Kubernetes</span></div>
+        </article>
+
+        <article class="repo" data-od-id="repo-wibx">
+          <div class="name">
+            <svg viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8Z"/></svg>
+            <a href="#contact">wibx-ix</a>
+          </div>
+          <p class="desc">Multi-vendor internet exchange automation integrating Cisco NSO, Equinix Fabric &amp; IX, and Megaport for automated interconnect provisioning.</p>
+          <div class="foot">
+            <span class="lang"><span class="dot lang-e"></span>Python</span>
+            <span class="lang"><span class="dot lang-d"></span>Java</span>
+            <span>2025</span>
+          </div>
+          <div class="tags"><span class="t">Cisco NSO</span><span class="t">Equinix</span><span class="t">Megaport</span><span class="t">NetBox</span><span class="t">BIRD</span></div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────────────────────────────── SKILLS ───────── -->
+  <section class="section" id="skills" data-od-id="skills" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <h2>Core competencies</h2>
+        <span class="meta">8 areas</span>
+      </div>
+      <div class="skills">
+        <div class="label-grid" data-od-id="skills-grid">
+          <span class="label on">Agentic AI &amp; LLM orchestration</span>
+          <span class="label on">Infrastructure &amp; cloud automation</span>
+          <span class="label on">Full-stack &amp; mobile engineering</span>
+          <span class="label on">Network automation &amp; orchestration</span>
+          <span class="label on">Enterprise security &amp; IAM</span>
+          <span class="label on">Testing &amp; reliability engineering</span>
+          <span class="label on">CI/CD &amp; DevOps operations</span>
+          <span class="label on">Technical PM &amp; documentation</span>
+          <span class="label off">UI/UX &amp; design systems</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────────────────────────────── OPS ─────────── -->
+  <section class="section" id="ops" data-od-id="ops" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <h2>Engineering operations</h2>
+        <span class="meta">4 disciplines</span>
+      </div>
+      <div class="list">
+        <div class="list-row" data-od-id="ops-docs">
+          <div>
+            <div class="ttl">Documentation &amp; specification</div>
+            <div class="sub">Architecture docs · functional specs · user &amp; admin guides · design systems</div>
+          </div>
+          <div class="right"><span class="date">4 platforms</span></div>
+        </div>
+        <div class="list-row" data-od-id="ops-testing">
+          <div>
+            <div class="ttl">Testing &amp; quality assurance</div>
+            <div class="sub">Production stress campaigns · QA plans · code-review audits · regression coverage</div>
+          </div>
+          <div class="right"><span class="date">E2E + unit</span></div>
+        </div>
+        <div class="list-row" data-od-id="ops-incident">
+          <div>
+            <div class="ttl">Incident &amp; release management</div>
+            <div class="sub">Postmortems · root-cause analyses · structured changelogs · staged upgrades</div>
+          </div>
+          <div class="right"><span class="date">0-downtime</span></div>
+        </div>
+        <div class="list-row" data-od-id="ops-leadership">
+          <div>
+            <div class="ttl">Leadership &amp; stakeholder communication</div>
+            <div class="sub">Daily standups · stakeholder alignment · cross-team coordination</div>
+          </div>
+          <div class="right"><span class="date">Sipartech · E55C · WibX</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────────────────────────────── PROCESS ──────── -->
+  <section class="section" id="process" data-od-id="process" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <h2>Process</h2>
+        <span class="meta">4 steps</span>
+      </div>
+      <div class="proc-grid">
+        <div class="proc" data-od-id="process-1">
+          <div class="num">01 · DISCOVERY</div>
+          <h3>Spec &amp; architect</h3>
+          <p>User flows, technical specifications, and honest system design — agreed before a line of code.</p>
+          <div class="stamp">deliverable: architecture docs + plan</div>
+        </div>
+        <div class="proc" data-od-id="process-2">
+          <div class="num">02 · BUILD</div>
+          <h3>TDD-driven development</h3>
+          <p>Rapid, continuous-deployment cycles with automated unit and UI tests — progress you can see at every merge.</p>
+          <div class="stamp">deliverable: running preview + green tests</div>
+        </div>
+        <div class="proc" data-od-id="process-3">
+          <div class="num">03 · VERIFY</div>
+          <h3>QA &amp; stress testing</h3>
+          <p>Automated testing across devices and staging, plus load/stress campaigns where scale matters.</p>
+          <div class="stamp">deliverable: QA plan + validated release</div>
+        </div>
+        <div class="proc" data-od-id="process-4">
+          <div class="num">04 · RELEASE</div>
+          <h3>Launch &amp; hand over</h3>
+          <p>Production deployment, incident readiness, clear documentation, and a handover your team can own.</p>
+          <div class="stamp">deliverable: release notes + runbooks</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────────────────────────────── CONTACT ──────── -->
+  <section class="section" id="contact" data-od-id="contact" style="padding-top:0">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <h2>Let's build something that stays built.</h2>
+        <p>Tell me what you're building — I'll reply within one business day with honest thoughts on approach, timeline, and fit.</p>
+        <div class="list" style="margin-top:var(--space-4)">
+          <a class="list-row" href="mailto:dominjav43@gmail.com" data-od-id="link-email">
+            <div><div class="ttl">Email</div><div class="sub">dominjav43@gmail.com</div></div>
+            <div class="right"><span class="go">→</span></div>
+          </a>
+          <a class="list-row" href="https://github.com/dominjav43" target="_blank" rel="noopener" data-od-id="link-github">
+            <div><div class="ttl">GitHub</div><div class="sub">github.com/dominjav43</div></div>
+            <div class="right"><span class="go">↗</span></div>
+          </a>
+          <a class="list-row" href="https://dominjav43.github.io" target="_blank" rel="noopener" data-od-id="link-website">
+            <div><div class="ttl">Resume site</div><div class="sub">dominjav43.github.io</div></div>
+            <div class="right"><span class="go">↗</span></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="form-card" data-od-id="contact-form-panel">
+        <div class="form-head">Start a project</div>
+        <form id="contactForm" novalidate>
+          <div class="form-body">
+            <div class="field">
+              <label for="c-name">Name <span class="req">*</span></label>
+              <input id="c-name" name="name" type="text" autocomplete="name" placeholder="Jane Doe">
+            </div>
+            <div class="field">
+              <label for="c-email">Email <span class="req">*</span></label>
+              <input id="c-email" name="email" type="email" autocomplete="email" placeholder="jane@company.com">
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="c-type">Project type</label>
+                <select id="c-type" name="type">
+                  <option value="">Select type</option>
+                  <option>Web app</option>
+                  <option>Mobile app</option>
+                  <option>Web + mobile</option>
+                  <option>Cloud / API</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="c-budget">Budget range</label>
+                <select id="c-budget" name="budget">
+                  <option value="">Select range</option>
+                  <option>$5k – $15k</option>
+                  <option>$15k – $30k</option>
+                  <option>$30k – $60k</option>
+                  <option>$60k+</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <button type="submit" class="btn btn-primary" style="width:100%">Submit project brief</button>
+              <p class="form-err" id="formErr" role="alert" aria-live="polite"></p>
+            </div>
+          </div>
+        </form>
+        <div class="form-success" id="formSuccess" role="status">
+          <div class="ok"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 7"/></svg></div>
+          <h3>Brief received</h3>
+          <p>Thanks — I've got your project details and will reply within one business day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ──────────────────────────────────────── FOOTER ─────────── -->
+<footer class="footer" data-od-id="footer">
+  <div class="container footer-inner">
+    <span>© 2026 Dominic Javier · built to ship</span>
+    <div class="links">
+      <a href="#work">Pinned</a>
+      <a href="#ops">Ops</a>
+      <a href="mailto:dominjav43@gmail.com">Email</a>
+    </div>
+    <span class="mono">Swift · Kotlin · React · NestJS · Kubernetes</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---- theme toggle ---- */
+  var root = document.documentElement;
+  var STORE = "github-portfolio-theme";
+  var toggle = document.getElementById("themeToggle");
+  function applyTheme(t){
+    root.setAttribute("data-theme", t);
+    try { localStorage.setItem(STORE, t); } catch(_){}
+  }
+  try {
+    var saved = localStorage.getItem(STORE);
+    var initial = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    applyTheme(initial);
+  } catch(_) {
+    applyTheme("light");
+  }
+  toggle.addEventListener("click", function(){
+    applyTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark");
+  });
+
+  /* ---- mobile nav ---- */
+  var burger = document.getElementById("headerBurger");
+  var nav = document.getElementById("headerNav");
+  burger.addEventListener("click", function(){
+    var open = nav.classList.toggle("open");
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  nav.querySelectorAll("a").forEach(function(a){
+    a.addEventListener("click", function(){ nav.classList.remove("open"); burger.setAttribute("aria-expanded","false"); });
+  });
+
+  /* ---- contact form ---- */
+  var form = document.getElementById("contactForm");
+  var errEl = document.getElementById("formErr");
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var name = document.getElementById("c-name");
+    var email = document.getElementById("c-email");
+    var ok = true;
+    [name, email].forEach(function(inp){ inp.classList.remove("invalid"); });
+    if(!name.value.trim()){ name.classList.add("invalid"); ok = false; }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)){ email.classList.add("invalid"); ok = false; }
+    if(!ok){
+      errEl.textContent = "Please add your name and a valid email.";
+      return;
+    }
+    errEl.textContent = "";
+    form.style.display = "none";
+    document.getElementById("formSuccess").style.display = "block";
+  });
+})();
+</script>
+</body>
+</html>
